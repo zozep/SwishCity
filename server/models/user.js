@@ -11,10 +11,10 @@ var aliasValidator = [
     validator: 'isAlphanumeric',
     message: 'Alias should contain letters and numbers only'
   }),
-  validate({
-    validator: 'isUppercase',
-    message: 'Alias should be in upper-case'
-  })
+  // validate({
+  //   validator: 'isUppercase',
+  //   message: 'Alias should be in upper-case'
+  // })
 ];
 
 var pwValidator = [
