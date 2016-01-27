@@ -1,11 +1,20 @@
-app.config(function ($routeProvider) {
-  $routeProvider
-    .when('/',{
-        templateUrl: '/partials/main.html',
-        controller: "MainController",
-        controllerAs: "main"
-    })
-    .otherwise({
-        redirectTo: '/',
-    });
-});
+<h1>Welcome</h1>
+<h3>Register:</h3>
+
+Name: <input type="text" ng-model="newUser.name">
+E-mail: <input type="email" ng-model="newUser.email">
+Password: <input type="password" ng-model="newUser.password">
+Nickname: <input type="text" ng-model="newUser.alias">
+<button ng-click="usersCtrl.create(newUser)">Enter</button>
+</form>
+
+<hr>
+
+<form>
+<h3>Sign in with your Nickname:</h3>
+<form ng->
+Nickname: <input type="text" ng-model="usersCtrl.user.name">
+Password: <input type="password" ng-model="usersCtrl.user.password">
+
+<button ng-click="usersCtrl.login()">Enter</button>
+</form>

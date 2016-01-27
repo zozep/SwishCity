@@ -1,11 +1,21 @@
-app.config(function ($routeProvider) {
+myAngularObject.config(function ($routeProvider) {
   $routeProvider
     .when('/',{
-        templateUrl: '/partials/main.html',
-        controller: "MainController",
-        controllerAs: "main"
+        templateUrl: '/partials/welcome.html',
+        controller: "usersController",
+        controllerAs: "usersCtrl"
+    })
+    .when('/users/:id/edit', {
+		templateUrl: '/partials/edit.html',
+		controller: "EditController",
+		controllerAs: "editCtrl"
+    })
+    .when("dashboard",{
+    	templateUrl: "/partials/dashboard.html",
+    	controller: "courtsController",
+    	controllerAs: "courtsCtrl"
     })
     .otherwise({
-        redirectTo: '/',
-    });
+    	redirectTo: "/"
+    })
 });

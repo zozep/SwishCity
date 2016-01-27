@@ -1,11 +1,1 @@
-app.config(function ($routeProvider) {
-  $routeProvider
-    .when('/',{
-        templateUrl: '/partials/main.html',
-        controller: "MainController",
-        controllerAs: "main"
-    })
-    .otherwise({
-        redirectTo: '/',
-    });
-});
+<h1 ng-repeat="user in courtsCtrl.users">Welcome {{courtsCtrl.user.name}}</h1>
