@@ -8,7 +8,7 @@ myAngularObject.factory('UserFactory', function($http, $location) {
 	function register(user){
 		$http.post("/users", {name: user}).success(function(response){
 			if(response.errors){
-				console.log(response.errors);
+				(response.errors);
 			} else {
 				sessionUser = response;
 				$location.path('/dashboard');
