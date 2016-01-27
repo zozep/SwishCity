@@ -9,7 +9,7 @@ module.exports = function(app) {
 
 	// Show
 	app.get('/user/:id', users.getOne);
-
+		
 	// Create
 	app.post('/users', users.create);	
 
@@ -21,5 +21,6 @@ module.exports = function(app) {
 
 	// Destroy
 	app.delete('/users/:id', users.destroy);
+
 
 }

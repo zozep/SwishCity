@@ -13,8 +13,8 @@ Nickname: <input type="text" ng-model="newUser.alias">
 <form>
 <h3>Sign in with your Nickname:</h3>
 <form ng->
-Nickname: <input type="text" ng-model="usersCtrl.user.name">
+Nickname: <input type="text" ng-model="usersCtrl.user.alias">
 Password: <input type="password" ng-model="usersCtrl.user.password">
 
-<button ng-click="usersCtrl.login()">Enter</button>
+<button ng-click="usersCtrl.login(user)">Enter</button>
 </form>

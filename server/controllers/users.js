@@ -25,15 +25,15 @@ module.exports = (function() {
 
 			var newUser = new User({
 				name: req.body.name,
-				name: req.body.email,
-				name: req.body.password,
-				name: req.body.alias
+				email: req.body.email,
+				password: req.body.password,
+				alias: req.body.alias
 			});
 
 			newUser.save(function(err, newUser){
 				console.log(newUser);
 				if(err){ 
-					res.json(err);
+					res.json(err.errors);
 				} else {
 					res.json(newUser); 
 				}

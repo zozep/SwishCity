@@ -2,7 +2,7 @@ myAngularObject.config(function ($routeProvider) {
   $routeProvider
     .when('/',{
         templateUrl: '/partials/welcome.html',
-        controller: "usersController",
+        controller: "UsersController",
         controllerAs: "usersCtrl"
     })
     .when('/users/:id/edit', {

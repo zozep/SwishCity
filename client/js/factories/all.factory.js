@@ -17,14 +17,16 @@ myAngularObject.factory('UserFactory', function($http, $location) {
 	}
 
 	return {
-		login: function(name){
-			$http.get("/user/login/"+name).success(function(response){
-				if(response){
-					sessionUser = response;
-					$location.path('/dashboard');
-				} else {
-					register(name);
-				}
+		login: function(id, callback){
+			$http.get("/user/" + id).success(function(response){
+				calllback(function(){
+					if(response){
+						sessionUser = response;
+						$location.path('/dashboard');
+					} else {
+					register(id);
+					}
+				})
 			})
 		},
 		logout: function(){

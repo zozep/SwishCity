@@ -1,20 +1,25 @@
 myAngularObject.controller("UsersController", function(UserFactory, $location){
 	var _this = this;
 
-	function getAll(){
-		UserFactory.getAll(function(users){
-			_this.users = users;
+	// function getAll(){
+	// 	UserFactory.getAll(function(users){
+	// 		_this.users = users;
+	// 	})
+	// }
+
+	_this.err = {}
+
+	this.getOne = function(user){
+		UserFactory.getOne(function(user){
+			_this.user = user
 		})
 	}
-
-	getAll();
-	var sessionUser;
-
-	if(!sessionUser)
 	this.create = function(newUser){
+
 		UserFactory.create(newUser, function(err){
+			console.log(newUser)
 			_this.err = err;
-			getAll();
+			console.log(_this.err);
 			_this.user = {};
 			$location.path("/dashboard");
 		})
@@ -28,6 +33,7 @@ myAngularObject.controller("UsersController", function(UserFactory, $location){
 	}
 
 	this.login = function(){
+		console.log(_this.user);
 		UserFactory.login(_this.user);
 	}
 
