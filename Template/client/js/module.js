@@ -1,0 +1,1 @@
+myAngularObject = angular.module("myApp", ["ngRoute"]);
