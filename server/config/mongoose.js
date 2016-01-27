@@ -2,7 +2,7 @@ mongoose = require('mongoose');
 var fs = require('fs');
 
 //change to name of project
-mongoose.connect('mongodb://localhost/{name of project}');
+mongoose.connect('mongodb://localhost/MEAN-Project');
 
 var models_path = __dirname + '/../models';
 
