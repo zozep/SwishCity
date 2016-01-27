@@ -34,9 +34,9 @@ var UserSchema = new mongoose.Schema({
   name: { type: String, trim: true},
   email: { type: String, unique: true},
   password: { type: String, trim: true, unique: true, validate: pwValidator},
-  alias: { type: String, trim: true, unique: true validate: aliasValidator},
+  alias: { type: String, trim: true, unique: true, validate: aliasValidator},
   created_at: { type: Date, default: Date.now },
   updated_at: { type: Date, default: Date.now }
 });
 
-mongoose.model('User', UserSchema);
+var User = mongoose.model('User', UserSchema);

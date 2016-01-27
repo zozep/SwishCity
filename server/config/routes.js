@@ -1,3 +1,5 @@
+var users = require("../controllers/users.js");
+
 module.exports = function(app) {
   	var users = require('../controllers/users.js');
 
@@ -5,21 +7,19 @@ module.exports = function(app) {
     // Index
 	app.get('/users', users.index);
 
-	// New
-	app.get('/users/new', users.create);
-
 	// Show
-	app.get('/users/:id', users.show);
-
-	// Edit 
-	app.post('/users/:id/edit', users.update);
+	app.get('/user/:id', users.getOne);
 
 	// Create
 	app.post('/users', users.create);	
 
-	// Destroy app.delete('/users/:id')
-	app.post('/users/:id/destroy', users.destroy);
-	
-	// Update app.put/patch('/users/:id') 
-	app.post('/users/:id/update', users.update);
+	// Edit 
+	app.post('/users/:id/edit', users.edit);
+
+	// Update
+	app.put('/users/:id', users.update);
+
+	// Destroy
+	app.delete('/users/:id', users.destroy);
+
 }

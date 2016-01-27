@@ -5,10 +5,12 @@
     "start": "node server"
   },
   "dependencies": {
-    "express": "^latest",
-    "body-parser": "latest",
-    "ejs": "latest",
-    "mongoose": "latest",
-    "express-session": "latest"
+    "body-parser":          "latest",
+    "express":              "latest",
+    "express-session":      "latest",
+    "merge-descriptors":    "^1.0.1",
+    "mongoose":             "latest",
+    "mongoose-validator":   "latest",
+    "socket.io":            "latest"
   }
 }
