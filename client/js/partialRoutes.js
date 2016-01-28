@@ -10,12 +10,17 @@ myAngularObject.config(function ($routeProvider) {
 		controller: "EditController",
 		controllerAs: "editCtrl"
     })
-    .when("/dashboard",{
-    	templateUrl: "/partials/dashboard.html",
-    	controller: "courtsController",
-    	controllerAs: "courtsCtrl"
-    })
     .otherwise({
     	redirectTo: "/"
     })
+    .when("/dashboard",{
+        templateUrl: "/partials/dashboard.html",
+        controller: "DashboardController",
+        controllerAs: "dashCtrl"
+    })
+    // .when("/parks",{
+    //     templateUrl: "/partials/parks.html",
+    //     controller: "ParksController",
+    //     controllerAs: "parksCtrl"
+    // })    
 });

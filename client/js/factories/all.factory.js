@@ -60,12 +60,12 @@ myAngularObject.factory('UserFactory', function($http, $location) {
 	}
 })
 
-// myAngularObject.factory('CourtFactory', function($http) {
-// 	return {
-// 		getAll: function(callback){
-// 			$http.get("/users").success(function(response){
-// 				callback(response);
-// 			})
-// 		}
-// 	};
-// })
+myAngularObject.factory('ParkFactory', function($http) {
+	return {
+		getAll: function(callback){
+			$http.get("/parks").success(function(response){
+				callback(response);
+			})
+		}
+	};
+})

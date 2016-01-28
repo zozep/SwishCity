@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 
-var CourtSchema = new mongoose.Schema({
+var ParkSchema = new mongoose.Schema({
   name: { type: String, unique: true},
   google_id: {type: String},
   users: [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}],
@@ -8,4 +8,4 @@ var CourtSchema = new mongoose.Schema({
   updated_at: { type: Date, default: Date.now }
 });
 
-mongoose.model('Court', CourtSchema);
+var Park = mongoose.model('Park', ParkSchema);

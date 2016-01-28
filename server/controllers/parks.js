@@ -1,4 +1,4 @@
-var User = mongoose.model('User');
+var Park = mongoose.model('Park');
 
 module.exports = (function() {
 	return {

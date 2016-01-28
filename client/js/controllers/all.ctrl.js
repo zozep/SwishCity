@@ -55,15 +55,34 @@ myAngularObject.controller("EditController", function(UserFactory, $routeParams)
 			_this.user = user;
 		});
 	}
-// })
-// })
-// myAngularObject.controller("courtsController", function(UserFactory, CourtFactory){
-// 	var _this = this;
+})
 
+myAngularObject.controller("DashboardController", function(UserFactory, ParkFactory){
+	var _this = this;
+
+	UserFactory.loggedUser(function(user){
+		_this.user = user;
+	})
+
+	UserFactory.getAll(function(users){
+		_this.users = []
+		if(_this.user){
+			for(var i = 0; i < users.length; i++){
+				if(users[i]._id != _this.user._id){
+					_this.users.push(users[i]);
+				}
+			};
+		}
+	})
+})
+
+// myAngularObject.controller("ParksController", function(UserFactory, ParkFactory){
+// 	var _this = this;
+	
 // 	UserFactory.loggedUser(function(user){
 // 		_this.user = user;
 // 	})
-
+	
 // 	UserFactory.getAll(function(users){
 // 		_this.users = []
 // 		if(_this.user){
@@ -74,4 +93,4 @@ myAngularObject.controller("EditController", function(UserFactory, $routeParams)
 // 			};
 // 		}
 // 	})
-})
+// })

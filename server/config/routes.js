@@ -1,10 +1,9 @@
 var users = require("../controllers/users.js");
+var parks = require("../controllers/parks.js");
 
 module.exports = function(app) {
-  	var users = require('../controllers/users.js');
-
-// User
-    // Index
+//USER
+	// Index
 	app.get('/users', users.index);
 
 	// Show
@@ -25,4 +24,27 @@ module.exports = function(app) {
 	// Log in
 	app.post('/login', users.login);
 
+
+
+// //DASHBOARD
+//  	// Index
+// 	app.get('/dashboard', dashboard.index);
+
+// 	// Show
+// 	app.get('/dashboard/:id', dashboard.getOne);
+		
+// 	// Create
+// 	app.post('/dashboard', dashboard.create);	
+
+
+//PARKS
+
+	// //Index
+	// app.get('/parks', parks.index);
+
+	// // Show
+	// app.get('/parks/:id', parks.getOne);
+		
+	// // Create
+	// app.post('/indiv_infos', parks.create);	
 }
