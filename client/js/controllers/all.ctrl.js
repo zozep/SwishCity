@@ -1,12 +1,8 @@
 myAngularObject.controller("UsersController", function(UserFactory, $location){
 	var _this = this;
-
-	// function getAll(){
-	// 	UserFactory.getAll(function(users){
-	// 		_this.users = users;
-	// 	})
-	// }
-
+	this.email_err = "";
+	this.password_err = "";
+	this.alias_err = "";
 	_this.err = {}
 
 	this.getOne = function(user){
@@ -15,13 +11,14 @@ myAngularObject.controller("UsersController", function(UserFactory, $location){
 		})
 	}
 	this.create = function(newUser){
-
-		UserFactory.create(newUser, function(err){
-			console.log(newUser)
-			_this.err = err;
-			console.log(_this.err);
-			_this.user = {};
-			$location.path("/dashboard");
+		UserFactory.create(newUser, function(response){
+			if(response.errors){
+				_this.email_err = (response.errors.email) ? response.errors.email.message : "";
+				_this.alias_err = (response.errors.alias) ? response.errors.alias.message : "";
+				_this.password_err = (response.errors.password) ? response.errors.password.message : "";
+			} else {
+				UserFactory.register(response);
+			}
 		})
 	}
 
@@ -32,9 +29,9 @@ myAngularObject.controller("UsersController", function(UserFactory, $location){
 		})
 	}
 
-	this.login = function(){
-		console.log(_this.user);
-		UserFactory.login(_this.user);
+	this.login = function(user){
+		console.log(user);
+		UserFactory.login(user);
 	}
 
 	this.logout = function(){

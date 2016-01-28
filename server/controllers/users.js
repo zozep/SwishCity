@@ -13,6 +13,7 @@ module.exports = (function() {
 		},
 		getOne: function(req, res){
 			User.findOne({_id: req.params.id}, function(err, record){
+				console.log({_id: req.body.name})
 				if(err){
 					return res.json(false);
 				}else{
@@ -20,7 +21,20 @@ module.exports = (function() {
 				}
 			})
 		},
+		login: function(req, res){
+			User.findOne({alias: req.body.alias}, function(err, user){
+				console.log(user);
+				if(!user){
+					return res.json({err: "User is not found!"});
 
+				}else{
+					if(user.password == req.body.password){
+						return res.json(user);
+					}
+					return res.json({err: "password does not match user's password!"});
+				}
+			})
+		},
 		create: function(req, res){
 
 			var newUser = new User({
@@ -31,9 +45,12 @@ module.exports = (function() {
 			});
 
 			newUser.save(function(err, newUser){
-				console.log(newUser);
-				if(err){ 
-					res.json(err.errors);
+				if(err){
+					if(err.code = 11000){
+						res.json({errors: {alias: {message: "That nickname is already taken... Please choose another."}}})
+					} else {
+						res.json(err);
+					}
 				} else {
 					res.json(newUser); 
 				}

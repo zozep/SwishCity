@@ -1,20 +1,23 @@
 <h1>Welcome</h1>
 <h3>Register:</h3>
 
+<h5 ng-bind="usersCtrl.email_err"></h5>
+<h5 ng-bind="usersCtrl.password_err"></h5>
+<h5 ng-bind="usersCtrl.alias_err"></h5>
+
 Name: <input type="text" ng-model="newUser.name">
 E-mail: <input type="email" ng-model="newUser.email">
 Password: <input type="password" ng-model="newUser.password">
 Nickname: <input type="text" ng-model="newUser.alias">
 <button ng-click="usersCtrl.create(newUser)">Enter</button>
-</form>
 
-<hr>
+
 
 <form>
 <h3>Sign in with your Nickname:</h3>
 <form ng->
-Nickname: <input type="text" ng-model="usersCtrl.user.alias">
-Password: <input type="password" ng-model="usersCtrl.user.password">
+Nickname: <input type="text" ng-model="user.alias">
+Password: <input type="password" ng-model="user.password">
 
 <button ng-click="usersCtrl.login(user)">Enter</button>
 </form>

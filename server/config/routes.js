@@ -22,5 +22,7 @@ module.exports = function(app) {
 	// Destroy
 	app.delete('/users/:id', users.destroy);
 
+	// Log in
+	app.post('/login', users.login);
 
 }

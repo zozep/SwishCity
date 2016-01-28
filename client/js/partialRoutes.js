@@ -10,7 +10,7 @@ myAngularObject.config(function ($routeProvider) {
 		controller: "EditController",
 		controllerAs: "editCtrl"
     })
-    .when("dashboard",{
+    .when("/dashboard",{
     	templateUrl: "/partials/dashboard.html",
     	controller: "courtsController",
     	controllerAs: "courtsCtrl"

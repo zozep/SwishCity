@@ -5,28 +5,22 @@ myAngularObject.factory('UserFactory', function($http, $location) {
 
 	var sessionUser;
 
-	function register(user){
-		$http.post("/users", {name: user}).success(function(response){
-			if(response.errors){
-				(response.errors);
-			} else {
-				sessionUser = response;
-				$location.path('/dashboard');
-			}
-		});
-	}
-
 	return {
-		login: function(id, callback){
-			$http.get("/user/" + id).success(function(response){
-				calllback(function(){
-					if(response){
-						sessionUser = response;
-						$location.path('/dashboard');
-					} else {
-					register(id);
-					}
-				})
+		register: function(user){
+			sessionUser = user;
+			$location.path('/dashboard');
+		},
+		login: function(user){
+			console.log(user)
+			$http.post("/login", user).success(function(response){
+				console.log(response)
+				if(response.err){
+					sessionError = response.err;
+					$location.path('/welcome');
+				} else {
+					sessionUser = response;
+					$location.path('/dashboard');
+				}
 			})
 		},
 		logout: function(){
@@ -49,8 +43,8 @@ myAngularObject.factory('UserFactory', function($http, $location) {
 		},
 
 		create: function(newUser, callback){
-			$http.post("/users", newUser).success(function(res){
-				callback(res);
+			$http.post("/users", newUser).success(function(response){
+				callback(response);
 			})
 		},
 		update: function(user, callback){

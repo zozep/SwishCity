@@ -11,10 +11,6 @@ var aliasValidator = [
     validator: 'isAlphanumeric',
     message: 'Alias should contain letters and numbers only'
   }),
-  // validate({
-  //   validator: 'isUppercase',
-  //   message: 'Alias should be in upper-case'
-  // })
 ];
 
 var pwValidator = [
@@ -31,10 +27,10 @@ var pwValidator = [
 
 
 var UserSchema = new mongoose.Schema({
-  name: { type: String, trim: true},
-  email: { type: String, unique: true},
-  password: { type: String, trim: true, unique: true, validate: pwValidator},
-  alias: { type: String, trim: true, unique: true, validate: aliasValidator},
+  name: { type: String, trim: true, required: true},
+  email: { type: String, required: true},
+  password: { type: String, trim: true, validate: pwValidator, required: true},
+  alias: { type: String, trim: true, unique: true, validate: aliasValidator, required: true},
   created_at: { type: Date, default: Date.now },
   updated_at: { type: Date, default: Date.now }
 });
