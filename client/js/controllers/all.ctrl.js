@@ -31,6 +31,14 @@ myAngularObject.controller("UsersController", function(UserFactory, $location){
 
 	this.login = function(user){
 		console.log(user);
+		var socket = io.connect();
+		var name = user.alias
+		// console.log("hello")
+		
+		socket.emit("new user", name);
+		// socket.on("new user notification", function(name){
+		// 	$("#messages").append("<p> " + name + " has joined!</p>")
+		// }
 		UserFactory.login(user);
 	}
 
@@ -66,6 +74,10 @@ myAngularObject.controller("DashboardController", function(UserFactory, ParkFact
 
 	var map;
 	var infoWindow;
+
+	UserFactory.loggedUser(function(user){
+		_this.user = user
+	})
 
 	ParkFactory.geolocation(function(position){
 		console.log(position);

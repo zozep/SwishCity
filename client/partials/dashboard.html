@@ -1,1 +1,31 @@
-<h1>Hello {{dashCtrl.user}}</h1>
+
+<h1>Hello {{dashCtrl.user.alias}}</h1>
+<script type="text/javascript">
+	$(document).ready(function(){
+		console.log("it started")
+		if(socket == undefined){
+			var socket = io.connect();
+			var name = {{dashCtrl.user.alias}}
+			console.log("hello")
+			
+			socket.emit("new user", name);
+			socket.on("new user notification", function(name){
+				$("#messages").append("<p> " + name + " has joined!</p>")
+			}
+		})
+
+		$("form").submit(function(){
+
+
+			socket.emit("new message",$("#m").val());
+			$("#m").val("");
+
+			return false;
+			// all the line above does is make it so the page does not reload when someone submits the form
+		})
+
+		socket.on("new message notification", function(data){
+			$("#messages").append("<p> " + data.username + ": " + data.message + "</p>")
+		})
+	})
+</script>

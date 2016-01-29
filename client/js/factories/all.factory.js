@@ -17,6 +17,9 @@ myAngularObject.factory('UserFactory', function($http, $location) {
 					$location.path('/welcome');
 				} else {
 					sessionUser = response;
+					// var socket = io.connect();
+					// var name = response.alias
+					// socket.emit("new user", name);
 					$location.path('/dashboard');
 				}
 			})

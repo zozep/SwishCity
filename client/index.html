@@ -5,15 +5,42 @@
     <script type="text/javascript" src="/js/lib/angular/angular.js"></script>
     <script type="text/javascript" src="/js/lib/angular/angular-route.js"></script>
 	<script type="text/javascript" src="/js/lib/google-maps.js"></script>
+	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 	<script type="text/javascript" src="/js/module.js"></script>
 	<script type="text/javascript" src="/js/factories/all.factory.js"></script>
 	<script type="text/javascript" src="/js/controllers/all.ctrl.js"></script>
 	<script type="text/javascript" src="/js/partialRoutes.js"></script>
+	<script type="text/javascript" src="/socket.io/socket.io.js"></script>
+
 
 </head>
 <body>
  	<div ng-app="myApp">
  		<div ng-view=""></div>
     </div>
+    <div id = "chat">
+    	<div id = "m"></div>
+    	<form id="chat_stuff">
+    		<input id="m" name = "message" type="text">
+    		<input type="submit" value="chat">
+    	</form>
+    </div>
 </body>
+<!-- <script type="text/javascript" src="/js/sockets/sockets.js"></script> -->
+<script type='text/javascript'>
+	// var socket = re
+	// $("#chat_stuff").submit(function(){
+
+
+	// 	socket.emit("new message",$("#m").val());
+	// 	$("#m").val("");
+
+	// 	return false;
+	// 	// all the line above does is make it so the page does not reload when someone submits the form
+	// })
+
+	// socket.on("new message notification", function(data){
+	// 	$("#messages").append("<p> " + data.username + ": " + data.message + "</p>")
+	// })
+</script>
 </html>
