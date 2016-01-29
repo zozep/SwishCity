@@ -2,25 +2,23 @@ myAngularObject.factory('UserFactory', function($http, $location) {
 	if(!sessionUser){
 		$location.path('/');
 	}
-
+	var _this = this;
 	var sessionUser;
 
-	return {
+	var factory = {
+		sessionUser: {},
 		register: function(user){
 			sessionUser = user;
 			$location.path('/dashboard');
 		},
-		login: function(user){
+		login: function(user, callback){
 			$http.post("/login", user).success(function(response){
 				if(response.err){
 					sessionError = response.err;
 					$location.path('/welcome');
 				} else {
-					sessionUser = response;
-					// var socket = io.connect();
-					// var name = response.alias
-					// socket.emit("new user", name);
-					$location.path('/dashboard');
+					_this.sessionUser = response;
+					callback();
 				}
 			})
 		},
@@ -29,7 +27,7 @@ myAngularObject.factory('UserFactory', function($http, $location) {
 			$location.path("/");
 		},
 		loggedUser: function(callback){
-			callback(sessionUser);
+			callback(_this.sessionUser);
 		},
 		getOne: function(id, callback){
 			$http.get("/user/" + id).success(function(response){
@@ -57,6 +55,7 @@ myAngularObject.factory('UserFactory', function($http, $location) {
 			})
 		}
 	}
+	return factory;
 })
 
 myAngularObject.factory('ParkFactory', function() {

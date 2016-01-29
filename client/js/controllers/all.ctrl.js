@@ -30,16 +30,10 @@ myAngularObject.controller("UsersController", function(UserFactory, $location){
 	}
 
 	this.login = function(user){
-		console.log(user);
-		var socket = io.connect();
-		var name = user.alias
-		// console.log("hello")
-		
-		socket.emit("new user", name);
-		// socket.on("new user notification", function(name){
-		// 	$("#messages").append("<p> " + name + " has joined!</p>")
-		// }
-		UserFactory.login(user);
+
+		UserFactory.login(user, function(){
+			$location.path('/dashboard');
+		});
 	}
 
 	this.logout = function(){
@@ -66,27 +60,30 @@ myAngularObject.controller("EditController", function(UserFactory, $routeParams)
 	}
 })
 
-myAngularObject.controller("DashboardController", function(/*UserFactory*/ ParkFactory, DashboardFactory){
+myAngularObject.controller("DashboardController", function(UserFactory, ParkFactory, DashboardFactory){
 	var _this = this;
-
-	// var service = new google.maps.places.PlacesService(map);
-    // var distance = new google.maps.DistanceMatrixRequest(map);
+	UserFactory.loggedUser(function(user){
+		_this.user = user
+		
+		if(_this.user != undefined){
+			console.log(_this.user)
+			socket.emit("new user", _this.user.alias);
+		
+			this.courts = [];
+			ParkFactory.geolocation(function(position){
+			initialize(position.coords.latitude, position.coords.longitude);
+			})
+		}
+	})
 
 	var map;
 	var infoWindow;
-	this.courts = [];
-	// UserFactory.loggedUser(function(user){
-	// 	_this.user = user
-	// })
-	ParkFactory.geolocation(function(position){
-		initialize(position.coords.latitude, position.coords.longitude);
-	});
-
-	// this.getOne = function(users){
-	// 	UserFactory.getOne(function(users){
-	// 		_this.users = users
-	// 	})
-	// }
+	
+	this.getOne = function(users){
+		UserFactory.getOne(function(users){
+			_this.users = users
+		})
+	}
 	function initialize(lat, lng) {
 	  var initposition = new google.maps.LatLng(lat, lng);
 	  console.log(lat, lng);

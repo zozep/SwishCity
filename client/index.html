@@ -14,35 +14,30 @@
 	<script type="text/javascript" src="/socket.io/socket.io.js"></script>
 
 
-
 </head>
 <body>
  	<div ng-app="myApp">
  		<div ng-view=""></div>
     </div>
-    <div id = "chat">
-    	<div id = "m"></div>
-    	<form id="chat_stuff">
-    		<input id="m" name = "message" type="text">
+    <div id ="chat">
+    	<div id ="m"></div>
+    	<form id ="chat_stuff">
+    		<input id="message" name ="message" type="text">
     		<input type="submit" value="chat">
     	</form>
     </div>
 </body>
-<!-- <script type="text/javascript" src="/js/sockets/sockets.js"></script> -->
 <script type='text/javascript'>
-	// var socket = re
-	// $("#chat_stuff").submit(function(){
+	socket = io.connect();
+	$("#chat_stuff").submit(function(){
+		socket.emit("new message",$("#message").val());
+		$("#message").val("");
+		return false;
+	//all the line above does is make it so the page does not reload when someone submits the form
+	})
 
-
-	// 	socket.emit("new message",$("#m").val());
-	// 	$("#m").val("");
-
-	// 	return false;
-	// 	// all the line above does is make it so the page does not reload when someone submits the form
-	// })
-
-	// socket.on("new message notification", function(data){
-	// 	$("#messages").append("<p> " + data.username + ": " + data.message + "</p>")
-	// })
+	socket.on("new message notification", function(data){
+		$("#m").append("<p> " + data.username + ": " + data.message + "</p>")
+	})
 </script>
 </html>

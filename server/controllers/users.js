@@ -46,10 +46,10 @@ module.exports = (function() {
 				password: req.body.password,
 				alias: req.body.alias
 			});
-
 			newUser.save(function(err, newUser){
 				if(err){
-					if(err.code = 11000){
+					console.log(err)
+					if(err.code == 11000){
 						res.json({errors: {alias: {message: "That nickname is already taken... Please choose another."}}})
 					} else {
 						res.json(err);
