@@ -11,9 +11,7 @@ myAngularObject.factory('UserFactory', function($http, $location) {
 			$location.path('/dashboard');
 		},
 		login: function(user){
-			console.log(user)
 			$http.post("/login", user).success(function(response){
-				console.log(response)
 				if(response.err){
 					sessionError = response.err;
 					$location.path('/welcome');
@@ -57,38 +55,42 @@ myAngularObject.factory('UserFactory', function($http, $location) {
 		}
 	}
 })
-myAngularObject.factory('DashboardFactory', function() {
-	_this.factory = {};
-	factory.position;
-	
-	if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(function(position) {
-      var pos = {
-        lat: position.coords.latitude,
-        lng: position.coords.longitude
-      };
 
-      infoWindow.setPosition(pos);
-      infoWindow.setContent('Location found.');
-      map.setCenter(pos);
-    }, function() {
-      handleLocationError(true, infoWindow, map.getCenter());
-    });
-  } else {
-    // Browser doesn't support Geolocation
-    handleLocationError(false, infoWindow, map.getCenter());
-  }
+myAngularObject.factory('ParkFactory', function() {
+	factory = {};
+	factory.position = {};
+
+	factory.logout= function(){
+		factory.position = {};
+	}
+	factory.geolocation = function(callback){
+		if (navigator.geolocation) {
+    		navigator.geolocation.getCurrentPosition(function(position) {
+				factory.position = {
+					lat: position.coords.latitude,
+					lng: position.coords.longitude
+				};
+				callback(factory.position)
+      			//infoWindow.setPosition(pos);
+      			//infoWindow.setContent('Location found.');
+      			//map.setCenter(pos);
+
+    		}, function() {
+      			handleLocationError(true, infoWindow, map.getCenter());
+    		});
+
+  		} else {
+    		// Browser doesn't support Geolocation
+    		handleLocationError(false, infoWindow, map.getCenter());
+  		}
+  	}
+
+  	return factory;
+
 });
 
-myAngularObject.factory('ParkFactory', function($http) {
-	if (navigator.geolocation) {    
-        function success(pos){
-            factory.position = pos.coords;
-        }
-        navigator.geolocation.getCurrentPosition(success);
-    } else {
-        alert('Geolocation is not supported in your browser');
-    }
+myAngularObject.factory('DashboardFactory', function($http) {
+
 	return {
 		getAll: function(callback){
 			$http.get("/users").success(function(response){
@@ -96,5 +98,6 @@ myAngularObject.factory('ParkFactory', function($http) {
 			})
 		}
 	};
+	
 })
 

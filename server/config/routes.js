@@ -1,5 +1,5 @@
 var users = require("../controllers/users.js");
-var parks = require("../controllers/parks.js");
+// var parks = require("../controllers/parks.js");
 
 module.exports = function(app) {
 //USER

@@ -36,6 +36,7 @@ myAngularObject.controller("UsersController", function(UserFactory, $location){
 
 	this.logout = function(){
 		UserFactory.logout();
+		DashboardFactory.logout();
 	}
 })
 
@@ -57,15 +58,67 @@ myAngularObject.controller("EditController", function(UserFactory, $routeParams)
 	}
 })
 
-myAngularObject.controller("DashboardController", function(UserFactory, ParkFactory){
+myAngularObject.controller("DashboardController", function(UserFactory, ParkFactory, DashboardFactory){
 	var _this = this;
 
-	var service = new google.maps.places.PlacesService(map);
-    var directions = new google.maps.DirectionsRoute();
-    var distance = new google.maps.DistanceMatrixRequest();
+	// var service = new google.maps.places.PlacesService(map);
+    // var distance = new google.maps.DistanceMatrixRequest(map);
 
+	var map;
+	var infoWindow;
 
-	service.nearbySearch(request, callback);
+	ParkFactory.geolocation(function(position){
+		console.log(position);
+		_this.position = position;
+	});
+
+	this.getOne = function(users){
+		UserFactory.getOne(function(users){
+			_this.users = users
+		})
+	}
+ //    function performSearch() {
+ //  	var request = {
+ //    bounds: map.getBounds(),
+ //    keyword: 'basketball court'
+ //  	};
+
+ //  	service.radarSearch(request, callback);
+	// }
+
+	// function callback(results, status) {
+	//   if (status !== google.maps.places.PlacesServiceStatus.OK) {
+	//     console.error(status);
+	//     return;
+	//   }
+	//   for (var i = 0, result; result = results[i]; i++) {
+	//     addMarker(result);
+	//   }
+	// }
+
+	// function addMarker(place) {
+	//   var marker = new google.maps.Marker({
+	//   	map: map,
+	//     position: place.geometry.location,
+	//     icon: {
+	//       url: 'http://maps.gstatic.com/mapfiles/circle.png',
+	//       anchor: new google.maps.Point(10, 10),
+	//       scaledSize: new google.maps.Size(10, 17)
+	//     }
+	//   });
+
+	//   google.maps.event.addListener(marker, 'click', function() {
+	//     service.getDetails(place, function(result, status) {
+	//       if (status !== google.maps.places.PlacesServiceStatus.OK) {
+	//         console.error(status);
+	//         return;
+	//       }
+	//       infoWindow.setContent(result.name);
+	//       infoWindow.open(map, marker);
+	//     });
+	//   });
+	// }
+	// service.nearbySearch(request, callback);
 	// UserFactory.loggedUser(function(user){
 	// 	_this.user = user;
 	// })
