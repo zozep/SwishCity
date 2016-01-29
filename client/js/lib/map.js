@@ -19,7 +19,7 @@ var map;
             map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
       
       //search for schools within 1500 metres of our current location, and as a marker use school.png
-      placesRequest('Schools',coords,1500,['school'],'images/school.png');
+      placesRequest('Basketball',coords,1500,['school'],'images/school.png');
 
 
             // Place the initial marker
@@ -131,4 +131,3 @@ var map;
       }
     })
   }
-}

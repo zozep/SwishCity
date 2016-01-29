@@ -1,30 +1,7 @@
-<html>
-	<head>
-	<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-	<meta charset="utf-8">
-	<style>
-  		html, body {
-    	height: 100%;
-    	margin: 0;
-    	padding: 0;
- 	}
- 	#map {
- 	 	height: 100%;
-  	}
-	</style>
-</head>
-<body>
 <h1>Hello {{dashCtrl.user.alias}}</h1>
-	<div id="map"></div>
-<body onload="initGeolocation();">
     <div style="position:absolute; width:380px; height: 100%; overflow:auto; float:left; padding-left:10px; padding-right:10px;">
         <h1>Google Places API</h1>
-        <p>
-		lorem ipsum
-		</p>
+		<div ng-repeat="court in dashCtrl.courts">
+			<p ng-bind="court.place_id"></p>
+		</div>
     </div>
-    <!-- map div container -->
-
-<div id="map_canvas" style="height:500px; margin-left:400px; border-right: 1px solid #666666; border-bottom: 1px solid #666666; border-top: 1px solid #AAAAAA; border-left: 1px solid #AAAAAA;"></div>
-</body>
-</html>

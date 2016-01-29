@@ -61,25 +61,16 @@ myAngularObject.factory('UserFactory', function($http, $location) {
 
 myAngularObject.factory('ParkFactory', function() {
 	factory = {};
-	factory.position = {};
+	
 
-	factory.logout= function(){
-		factory.position = {};
-	}
 	factory.geolocation = function(callback){
 		if (navigator.geolocation) {
     		navigator.geolocation.getCurrentPosition(function(position) {
-				factory.position = {
-					lat: position.coords.latitude,
-					lng: position.coords.longitude
-				};
-				callback(factory.position)
-      			//infoWindow.setPosition(pos);
-      			//infoWindow.setContent('Location found.');
-      			//map.setCenter(pos);
+				callback(position);
 
     		}, function() {
       			handleLocationError(true, infoWindow, map.getCenter());
+      			console.log("error")
     		});
 
   		} else {
