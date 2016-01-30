@@ -29,10 +29,7 @@ module.exports = (function() {
 
 				}else{
 					if(user.password == req.body.password){
-						returnedUser = {
-							alias: user.alias
-						}
-						return res.json(returnedUser);
+						return res.json(user);
 					}
 					return res.json({err: "password does not match user's password!"});
 				}

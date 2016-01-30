@@ -31,7 +31,6 @@ var UserSchema = new mongoose.Schema({
   email: { type: String, required: true},
   password: { type: String, trim: true, validate: pwValidator, required: true},
   alias: { type: String, trim: true, unique: true, validate: aliasValidator, required: true},
-  parks: [{type: mongoose.Schema.Types.ObjectId, ref: 'Park'}],
   created_at: { type: Date, default: Date.now },
   updated_at: { type: Date, default: Date.now }
 

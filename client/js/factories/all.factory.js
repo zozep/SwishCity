@@ -58,15 +58,24 @@ myAngularObject.factory('UserFactory', function($http, $location) {
 	return factory;
 })
 
-myAngularObject.factory('ParkFactory', function() {
+myAngularObject.factory('ParkFactory', function($http) {
 	factory = {};
+	var parks = []
+
+	factory.storeParks = function(newParks){
+		parks = newParks;
+		console.log(parks)
+	}
+
+	factory.getParks = function(callback){
+		callback(parks);
+	}
 	
 
 	factory.geolocation = function(callback){
 		if (navigator.geolocation) {
     		navigator.geolocation.getCurrentPosition(function(position) {
 				callback(position);
-
     		}, function() {
       			handleLocationError(true, infoWindow, map.getCenter());
       			console.log("error")
@@ -76,6 +85,12 @@ myAngularObject.factory('ParkFactory', function() {
     		// Browser doesn't support Geolocation
     		handleLocationError(false, infoWindow, map.getCenter());
   		}
+  	}
+
+  	factory.addToPark = function(title, id, user_id){
+  		$http.post("/add/park", {title: title, place_id: id, user_id: user_id}).success(function(response){
+  			console.log(response);
+  		})
   	}
 
   	return factory;
@@ -89,8 +104,36 @@ myAngularObject.factory('DashboardFactory', function($http) {
 			$http.get("/users").success(function(response){
 				callback(response);
 			})
+		},
+        createMap: function (coords, zoom){
+		    var mapOptions = {
+		        zoom: zoom,
+		        center: new google.maps.LatLng(coords.latitude, coords.longitude),
+		        panControl: false,
+		        panControlOptions: {
+		            coords: google.maps.ControlPosition.BOTTOM_LEFT
+		        },
+		        zoomControl: true,
+		        zoomControlOptions: {
+		            style: google.maps.ZoomControlStyle.LARGE,
+		            coords: google.maps.ControlPosition.RIGHT_CENTER
+		        },
+		        scaleControl: false
+		    };
+		    infowindow = new google.maps.InfoWindow({
+		        content: "holding..."
+		    });
+		    map = new google.maps.Map(document.getElementById('map'), mapOptions);
+		},
+		createPoint: function (location, title, callback){
+		    var point = new google.maps.Marker({
+		        title: title
+		    })
+		    point.setPosition(location);
+		    point.setMap(map);
+		    google.maps.event.addListener(point, 'click', function(){
+		    	callback(point.title);
+		    })
 		}
-	};
-	
-})
-
+	}
+});

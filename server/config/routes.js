@@ -1,5 +1,5 @@
 var users = require("../controllers/users.js");
-// var parks = require("../controllers/parks.js");
+var parks = require("../controllers/parks.js");
 
 module.exports = function(app) {
 //USER
@@ -24,7 +24,7 @@ module.exports = function(app) {
 	// Log in
 	app.post('/login', users.login);
 
-
+app.post('/add/park', parks.add);
 
 // //DASHBOARD
 //  	// Index

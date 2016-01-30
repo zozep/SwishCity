@@ -60,33 +60,34 @@ myAngularObject.controller("EditController", function(UserFactory, $routeParams)
 	}
 })
 
-myAngularObject.controller("DashboardController", function(UserFactory, ParkFactory, DashboardFactory){
+myAngularObject.controller("DashboardController", function(UserFactory, ParkFactory, DashboardFactory, $scope){
 	var _this = this;
+
+	$scope.show = false;
+	$scope.clickedPark = {};
+
 	UserFactory.loggedUser(function(user){
 		_this.user = user
-		
+		console.log(user);
 		if(_this.user != undefined){
-			console.log(_this.user)
 			socket.emit("new user", _this.user.alias);
-		
-			this.courts = [];
 			ParkFactory.geolocation(function(position){
-			initialize(position.coords.latitude, position.coords.longitude);
-			})
+				DashboardFactory.createMap({latitude: position.coords.latitude, longitude: position.coords.longitude}, 11);
+				initialize(position.coords.latitude, position.coords.longitude);
+	 		})
 		}
 	})
-
-	var map;
-	var infoWindow;
-	
 	this.getOne = function(users){
 		UserFactory.getOne(function(users){
 			_this.users = users
 		})
 	}
+	this.addToPark = function(title, id){
+		ParkFactory.addToPark(title, id, _this.user._id);
+	}
+
 	function initialize(lat, lng) {
 	  var initposition = new google.maps.LatLng(lat, lng);
-	  console.log(lat, lng);
 
 	  // Specify location, radius and place types for your Places API search.
 	  var request = {
@@ -98,44 +99,26 @@ myAngularObject.controller("DashboardController", function(UserFactory, ParkFact
 	  // Create the PlaceService and send the request.
 	  // Handle the callback with an anonymous function.
 	  var service = new google.maps.places.PlacesService(document.createElement('div'));
-	  service.radarSearch(request, function(results, status) {
+	  service.nearbySearch(request, function(results, status) {
 	    if (status == google.maps.places.PlacesServiceStatus.OK) {
-	      _this.courts = results;
-	      console.log(results);
+	    	$scope.parks = results;
+	    	$scope.$apply();
+	    	for(var i = 0; i < results.length; i++){
+	    		DashboardFactory.createPoint(results[i].geometry.location, results[i].name, function(title){
+	    			for(var i = 0; i < results.length; i++){
+	    				if(results[i].name == title){
+	    					console.log(results[i]);
+	    					$scope.clickedPark = results[i];
+	    					$scope.show = true;
+							$scope.$apply();
+	    				}
+	    			}
+				});
+	    	}
+	      // ParkFactory.storeParks(results);
 	    }
 	  });
 	}
-	// Run the initialize function when the window has finished loading.
-	//google.maps.event.addDomListener(window, 'load', initialize);
-
-	//   google.maps.event.addListener(marker, 'click', function() {
-	//     service.getDetails(place, function(result, status) {
-	//       if (status !== google.maps.places.PlacesServiceStatus.OK) {
-	//         console.error(status);
-	//         return;
-	//       }
-	//       infoWindow.setContent(result.name);
-	//       infoWindow.open(map, marker);
-	//     });
-	//   });
-	// }
-	// service.nearbySearch(request, callback);
-	// UserFactory.loggedUser(function(user){
-	// 	_this.user = user;
-	// })
-
-	// UserFactory.getAll(function(users){
-	// 	_this.users = []
-	// 	if(_this.user){
-	// 		for(var i = 0; i < users.length; i++){
-	// 			if(users[i]._id != _this.user._id){
-	// 				_this.users.push(users[i]);
-				// }
-	// 		};
-	// 	}
-	// })
-	
-
 })
 
 // myAngularObject.controller("ParksController", function(UserFactory, ParkFactory){

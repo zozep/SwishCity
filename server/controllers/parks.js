@@ -2,20 +2,31 @@ var Park = mongoose.model('Park');
 
 module.exports = (function() {
 	return {
-		index: function(req, res){
+		getUser: function(req, res){
 			console.log("Server / Ctrl / Users - Index")
 		},
-		new: function(req, res){
-			console.log("Server / Ctrl / Users - New")
-		},
-		create: function(req, res){
-			console.log("Server / Ctrl / Users - Create")
-			var newUser = new User(req.body)
-			newUser.save(function(err, user){
-				if(err)
-					res.json(err)
-				else
-					res.json(user)
+		add: function(req, res){
+			Park.findOne({google_id: req.body.place_id},function(err, park){
+				if(park){
+					park.users.push(req.body.user_id);
+					park.save(function(err){
+						if(err){
+							console.log(err);
+						}
+						res.json({message: "added"});
+					})
+				} else {
+					var newPark = new Park();
+					newPark.name = req.body.title;
+					newPark.google_id = req.body.place_id;
+					newPark.users.push(req.body.user_id);
+					newPark.save(function(err){
+						if(err)
+							res.json(err);
+						else
+							res.json({message: "added park and user"});
+					})
+				}
 			})
 		},
 		edit: function(req, res){
