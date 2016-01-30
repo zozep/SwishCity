@@ -68,7 +68,7 @@ myAngularObject.controller("DashboardController", function(UserFactory, ParkFact
 
 	UserFactory.loggedUser(function(user){
 		_this.user = user
-		console.log(user);
+		// console.log(user);
 		if(_this.user != undefined){
 			socket.emit("new user", _this.user.alias);
 			ParkFactory.geolocation(function(position){
@@ -92,12 +92,12 @@ myAngularObject.controller("DashboardController", function(UserFactory, ParkFact
 	  // Specify location, radius and place types for your Places API search.
 	  var request = {
 	    location: initposition,
-	    radius: 24000,
-	    keyword: 'basketball park',
+	    radius: 16093,
+	    keyword: 'basketball park'
 	  };
 
-	  // Create the PlaceService and send the request.
-	  // Handle the callback with an anonymous function.
+	  // Creating the PlaceService and sending request.
+	  // Handling the callback with an anonymous function.
 	  var service = new google.maps.places.PlacesService(document.createElement('div'));
 	  service.nearbySearch(request, function(results, status) {
 	    if (status == google.maps.places.PlacesServiceStatus.OK) {

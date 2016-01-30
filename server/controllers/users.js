@@ -56,11 +56,9 @@ module.exports = (function() {
 				}
 			})
 		},
-
 		edit: function(req, res){
 			console.log("Server / Ctrl / Users - Edit")
 		},
-
 		update: function(req, res){
 			User.findOne({_id:req.params.id}, function(err, record){
 				record.name = req.body.name,
@@ -78,7 +76,6 @@ module.exports = (function() {
 				})
 			})
 		},
-
 		destroy: function(req, res){
 			User.remove({_id:req.params.id}, function(err){
 				if(err){ 

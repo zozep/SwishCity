@@ -1,12 +1,13 @@
 <h1>Hello {{dashCtrl.user.alias}}</h1>
-    <h1>Google Places API</h1>
-	<div ng-repeat="court in parks">
+<h2>Courts within 10miles of your current location</h2>
+<div ng-repeat="court in parks">
 	<p ng-bind="court.name"></p>
  </div>
- <div id="map" style="position: absolute; right: 0px; top: 0px; height: 100%; width: 500px;"></div>
+
+ <div id="map" style="display: inlind-block; position: absolute; right: 0px; top: 0px; height: 50%; width: 100%;"></div>
  <div ng-show="show">
  	 <h4 ng-bind="clickedPark.name"></h4>
  	 <p ng-bind="clickedPark.place_id"></p>
  	 <p ng-bind="clickedPark.vicinity"><p>
- 	 <button ng-click="dashCtrl.addToPark(clickedPark.name, clickedPark.place_id)"></button>
+ 	 <button ng-click="dashCtrl.addToPark(clickedPark.name, clickedPark.place_id)">Add me</button>
  </div>

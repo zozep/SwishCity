@@ -36,7 +36,7 @@
 	//all the line above does is make it so the page does not reload when someone submits the form
 	})
 	socket.on("chat connect", function(data){
-        console.log(data)
+        // console.log(data)
         var str = ""
         for(idx in data){
             str += "<p> " + data[idx].username + ": " + data[idx].message + "</p>"
