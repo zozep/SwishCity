@@ -35,9 +35,22 @@
 		return false;
 	//all the line above does is make it so the page does not reload when someone submits the form
 	})
+	socket.on("chat connect", function(data){
+        console.log(data)
+        var str = ""
+        for(idx in data){
+            str += "<p> " + data[idx].username + ": " + data[idx].message + "</p>"
+        }
+        $('#m').html(str);
+    })
 
-	socket.on("new message notification", function(data){
-		$("#m").append("<p> " + data.username + ": " + data.message + "</p>")
-	})
+    socket.on("new message notification", function(data){
+        console.log(data)
+        var str = ""
+        for(idx in data){
+            str += "<p> " + data[idx].username + ": " + data[idx].message + "</p>"
+        }
+        $('#m').html(str);
+    })
 </script>
 </html>

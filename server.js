@@ -22,10 +22,12 @@ require("./server/config/routes.js")(app);
 var server = app.listen(9998, function() {
   console.log("server is running on port 9998...");
 })
+var message_arr = [];
 
 var io = require("socket.io").listen(server);
 
 io.sockets.on("connection", function(socket){
+	socket.emit("chat connect", message_arr);
 	console.log(">>>>>>>>>>>>>>>>>>");
 	console.log("a user has connected with socket!");
 	console.log("<<<<<<<<<<<<<<<<<<");
@@ -42,9 +44,12 @@ io.sockets.on("connection", function(socket){
 	})
 
 	socket.on("new message", function(data){
-		io.emit("new message notification", {
-			username: socket.username,
-			message: data
-		});
-	})
+		message_arr.push({username: socket.username, message: data})
+
+        if(message_arr.length > 5){
+            message_arr.splice(0,1);
+        }
+        console.log(message_arr.length)
+        io.emit("new message notification", message_arr);
+    })
 })
