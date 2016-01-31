@@ -1,5 +1,5 @@
 var Park = mongoose.model('Park');
-var User = mongoose.model("User");
+// var User = mongoose.model("User");
 
 module.exports = (function() {
 	return {
@@ -53,20 +53,19 @@ module.exports = (function() {
 
 				}
 			})
-			
-		},
-		edit: function(req, res){
-			console.log("Server / Ctrl / Users - Edit")
-		},
-		update: function(req, res){
-			console.log("Server / Ctrl / Users - Update")
-		},
-		show: function(req, res){
-			console.log("Server / Ctrl / Users - Show")
-		},
-		destroy: function(req, res){
-			console.log("Server / Ctrl / Users - Destroy")
-
 		}
+		// edit: function(req, res){
+		// 	console.log("Server / Ctrl / Users - Edit")
+		// },
+		// update: function(req, res){
+		// 	console.log("Server / Ctrl / Users - Update")
+		// },
+		// show: function(req, res){
+		// 	console.log("Server / Ctrl / Users - Show")
+		// },
+		// destroy: function(req, res){
+		// 	console.log("Server / Ctrl / Users - Destroy")
+
+		// }
 	}
 })();

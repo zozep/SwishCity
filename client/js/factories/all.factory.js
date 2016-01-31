@@ -76,7 +76,7 @@ myAngularObject.factory('ParkFactory', function($http) {
 	factory.geolocation = function(callback){
 		if (navigator.geolocation) {
     		navigator.geolocation.getCurrentPosition(function(position) {
-				callback(position);
+			callback(position);
     		}, function() {
       			handleLocationError(true, infoWindow, map.getCenter());
       			console.log("error")
