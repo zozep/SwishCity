@@ -43,7 +43,7 @@ app.post('/add/park', parks.add);
 	// app.get('/parks', parks.index);
 
 	// // Show
-	// app.get('/parks/:id', parks.getOne);
+	app.get('/parks/:id', parks.getOne);
 		
 	// // Create
 	// app.post('/indiv_infos', parks.create);	

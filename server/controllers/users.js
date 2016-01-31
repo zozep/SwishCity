@@ -41,7 +41,8 @@ module.exports = (function() {
 				name: req.body.name,
 				email: req.body.email,
 				password: req.body.password,
-				alias: req.body.alias
+				alias: req.body.alias,
+				atPark: false
 			});
 			newUser.save(function(err, newUser){
 				if(err){

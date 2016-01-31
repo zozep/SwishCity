@@ -32,7 +32,8 @@ var UserSchema = new mongoose.Schema({
   password: { type: String, trim: true, validate: pwValidator, required: true},
   alias: { type: String, trim: true, unique: true, validate: aliasValidator, required: true},
   created_at: { type: Date, default: Date.now },
-  updated_at: { type: Date, default: Date.now }
+  updated_at: { type: Date, default: Date.now },
+  atPark: { type: Boolean }
 
 });
 

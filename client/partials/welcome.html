@@ -5,11 +5,15 @@
 <h5 ng-bind="usersCtrl.password_err"></h5>
 <h5 ng-bind="usersCtrl.alias_err"></h5>
 
-Name: <input type="text" ng-model="newUser.name">
-E-mail: <input type="email" ng-model="newUser.email">
-Password: <input type="password" ng-model="newUser.password">
-Nickname: <input type="text" ng-model="newUser.alias">
-<button ng-click="usersCtrl.create(newUser)">Enter</button>
+<div id="myform">
+	<form>
+		Name: <input type="text" ng-model="newUser.name">
+		E-mail: <input type="email" ng-model="newUser.email">
+		Password: <input type="password" ng-model="newUser.password">
+		Nickname: <input type="text" ng-model="newUser.alias">
+		<button ng-click="usersCtrl.create(newUser)">Enter</button>
+	</form>
+</div>
 
 
 

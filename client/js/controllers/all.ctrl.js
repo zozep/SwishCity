@@ -102,6 +102,7 @@ myAngularObject.controller("DashboardController", function(UserFactory, ParkFact
 	  service.nearbySearch(request, function(results, status) {
 	    if (status == google.maps.places.PlacesServiceStatus.OK) {
 	    	$scope.parks = results;
+	    	//console.log(results);
 	    	$scope.$apply();
 	    	for(var i = 0; i < results.length; i++){
 	    		DashboardFactory.createPoint(results[i].geometry.location, results[i].name, function(title){
@@ -121,9 +122,15 @@ myAngularObject.controller("DashboardController", function(UserFactory, ParkFact
 	}
 })
 
-// myAngularObject.controller("ParksController", function(UserFactory, ParkFactory){
-// 	var _this = this;
+myAngularObject.controller("ParksController", function(UserFactory, ParkFactory){
+	var _this = this;
 	
+	
+	this.getDetails = function(){
+		var = request{
+			placeId:  
+		}
+	}
 // 	UserFactory.loggedUser(function(user){
 // 		_this.user = user;
 // 	})

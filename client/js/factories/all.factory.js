@@ -9,7 +9,8 @@ myAngularObject.factory('UserFactory', function($http, $location) {
 		sessionUser: {},
 		register: function(user){
 			sessionUser = user;
-			$location.path('/dashboard');
+			alert("Thank you for registering! Please log in");
+			$location.path('/');
 		},
 		login: function(user, callback){
 			$http.post("/login", user).success(function(response){

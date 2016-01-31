@@ -18,9 +18,9 @@ myAngularObject.config(function ($routeProvider) {
         controller: "DashboardController",
         controllerAs: "dashCtrl"
     })
-    // .when("/parks",{
-    //     templateUrl: "/partials/parks.html",
-    //     controller: "ParksController",
-    //     controllerAs: "parksCtrl"
-    // })    
+    .when("/parks/:id",{
+        templateUrl: "/partials/parks.html",
+        controller: "ParksController",
+        controllerAs: "parksCtrl"
+    })    
 });
