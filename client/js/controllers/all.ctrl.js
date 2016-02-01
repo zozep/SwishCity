@@ -127,41 +127,52 @@ myAngularObject.controller("DashboardController", function(UserFactory, ParkFact
 	}
 })
 
-myAngularObject.controller("ParksController", function(UserFactory, ParkFactory){
+myAngularObject.controller("ParksController", function(UserFactory, ParkFactory, $scope){
 	var _this = this;
+	$scope.park = ParkFactory.getPark()
 	
-// 	// this.getDetails = function(){
-// 	// 	var = request{
-// 	// 		placeId:  
-// 	// 	}
-// 	// }
+	var returnedParkInfo = {};
 
-	function placeDetailsByPlaceId(service, map, infowindow) {
-// Create and send the request to obtain details for a specific place,
-// using its Place ID.
-		var request = {
-			placeId: document.getElementById(ParkFactory.getPark()).value
-		};
-		service.getDetails(request, function (place, status) {
-			if (status == google.maps.places.PlacesServiceStatus.OK) {
-// If the request succeeds, draw the place location on the map
-// as a marker, and register an event to handle a click on the marker.
-	      		var marker = new google.maps.Marker({
-	        		map: map,
-	        		position: place.geometry.location
-	      		});
+	var service = new google.maps.places.PlacesService(document.createElement('div'));
+	service.getDetails({placeId: $scope.park}, callback);
 
-	      		google.maps.event.addListener(marker, 'click', function() {
-	        		infowindow.setContent('<div><strong>' + place.name + '</strong><br>' +
-	          		'Place ID: ' + place.place_id + '<br>' +
-	          		place.formatted_address + '</div>');
-	        		infowindow.open(map, this);
-	      		});
-
-	      		map.panTo(place.geometry.location);
-	      	}
-		})
+	function callback(result, status) {
+  		if (status == google.maps.places.PlacesServiceStatus.OK) {
+		   _this.park = result;
+		   console.log(result);
+		
+		}
 	}
+})
+
+
+// 	function placeDetailsByPlaceId(service, map, infowindow) {
+// // Create and send the request to obtain details for a specific place,
+// // using its Place ID.
+// 		var request = {
+// 			placeId: document.getElementById(_this.park).value
+// 		};
+// 		service.getDetails(request, function (place, status) {
+// 			if (status == google.maps.places.PlacesServiceStatus.OK) {
+// // If the request succeeds, draw the place location on the map
+// // add a marker, and register an event to handle a click on the marker.
+// 	      		var marker = new google.maps.Marker({
+// 	        		map: map,
+// 	        		position: place.geometry.location
+// 	      		});
+
+// 	      		google.maps.event.addListener(marker, 'click', function() {
+// 	        		infowindow.setContent('<div><strong>' + place.name + '</strong><br>' +
+// 	          		'Place ID: ' + place.place_id + '<br>' +
+// 	          		place.formatted_address + '</div>');
+// 	        		infowindow.open(map, this);
+// 	      		});
+
+// 	      		map.panTo(place.geometry.location);
+// 	      	}
+// 		})
+// 	}
+
 // 	UserFactory.loggedUser(function(user){
 // 		_this.user = user;
 // 	})
@@ -176,4 +187,4 @@ myAngularObject.controller("ParksController", function(UserFactory, ParkFactory)
 // 			};
 // 		}
 // 	})
-})
+// })
