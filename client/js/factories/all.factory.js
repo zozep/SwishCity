@@ -18,7 +18,8 @@ myAngularObject.factory('UserFactory', function($http, $location) {
 					sessionError = response.err;
 					$location.path('/welcome');
 				} else {
-					_this.sessionUser = response;
+					factory.sessionUser = response;
+					console.log(factory.sessionUser)
 					callback();
 				}
 			})
@@ -28,7 +29,7 @@ myAngularObject.factory('UserFactory', function($http, $location) {
 			$location.path("/");
 		},
 		loggedUser: function(callback){
-			callback(_this.sessionUser);
+			callback(factory.sessionUser);
 		},
 		getOne: function(id, callback){
 			$http.get("/user/" + id).success(function(response){
