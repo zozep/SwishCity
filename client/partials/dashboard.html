@@ -2,7 +2,7 @@
 <h2>Courts within 10miles of your current location</h2>
 <div>
 	<li ng-repeat="court in parks">
-		<a href="/parks/{{court.place_id}}"><span ng-bind="court.name"></span></a>
+		<button ng-click="dashCtrl.parkLoad(court.place_id)"><span ng-bind="court.name"></span></button>
 	 </li>
 </div>
 

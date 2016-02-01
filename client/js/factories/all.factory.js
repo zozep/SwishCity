@@ -59,9 +59,11 @@ myAngularObject.factory('UserFactory', function($http, $location) {
 	return factory;
 })
 
-myAngularObject.factory('ParkFactory', function($http) {
+myAngularObject.factory('ParkFactory', function($http, $location) {
+	var _this = this;
 	factory = {};
 	var parks = []
+
 
 	factory.storeParks = function(newParks){
 		parks = newParks;
@@ -72,6 +74,14 @@ myAngularObject.factory('ParkFactory', function($http) {
 		callback(parks);
 	}
 	
+	factory.parkPage = function(park_id){
+		_this.park = park_id
+		$location.path("/park");
+	}
+
+	factory.getPark = function(){
+		return _this.park;
+	}
 
 	factory.geolocation = function(callback){
 		if (navigator.geolocation) {

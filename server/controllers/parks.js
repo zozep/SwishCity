@@ -1,5 +1,5 @@
 var Park = mongoose.model('Park');
-// var User = mongoose.model("User");
+var User = mongoose.model("User");
 
 module.exports = (function() {
 	return {
