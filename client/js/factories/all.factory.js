@@ -19,7 +19,7 @@ myAngularObject.factory('UserFactory', function($http, $location) {
 					$location.path('/welcome');
 				} else {
 					factory.sessionUser = response;
-					console.log(factory.sessionUser)
+					// console.log(factory.sessionUser)
 					callback();
 				}
 			})

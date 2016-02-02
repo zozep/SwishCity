@@ -1,27 +1,32 @@
 <div id="dashboard">
-	<div id="user">
+	<div id="welcomeMsg">
 		<h1>Hello {{dashCtrl.user.alias}}</h1>
 	</div>	
 
 	<div id="map"></div>
-	
+
+
 	<div id="courts">
 		<p>Courts within 5 miles of your current location</p>
 		<ul>
 			<li ng-repeat="court in parks">
-				<button ng-click="dashCtrl.parkLoad(court.place_id)">
+				<a ng-click="dashCtrl.parkLoad(court.place_id)">
 					<span ng-bind="court.name"></span>
-				</button>
+				</a>
 			</li>
 		</ul>
 	</div>
 
 
-	 <div ng-show="show">
-	 	 <h4 ng-bind="clickedPark.name"></h4>
-	 	 <p ng-bind="clickedPark.place_id"></p>
-	 	 <p ng-bind="clickedPark.vicinity"></p>
-	 	 <button ng-click="dashCtrl.addToPark(clickedPark.name, clickedPark.place_id)">Add me</button>
-	 </div>
+<!-- 	<div ng-show="show">
+		<h4 ng-bind="clickedPark.name"></h4>
+ 	 	<p ng-bind="clickedPark.place_id"></p>
+ 	 	<button ng-click="dashCtrl.addToPark(clickedPark.name, clickedPark.place_id)">Add me</button>
+	</div> -->
+
+
+	<div id="chatroom">
+		<chat></chat>
+	</div>
+
 </div>
-<chat></chat>

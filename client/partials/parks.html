@@ -1,6 +1,13 @@
 <h1>Park Info</h1>
-<div ng-bind="parksCtrl.park.name"></div>
-<div ng-bind="parksCtrl.park.formatted_address"></div>
-<div ng-bind="parksCtrl.park.formatted_phone_number"></div>
-<button ng-click="parksCtrl.addToPark()">Add me</button>
-<chat></chat>
+<div id="parkInfo">
+	<div id="parkForm">
+		<div ng-bind="parksCtrl.park.name"></div>
+		<div ng-bind="parksCtrl.park.formatted_address"></div>
+		<div ng-bind="parksCtrl.park.formatted_phone_number"></div>
+		<button ng-click="parksCtrl.addToPark()">Add me</button>
+	</div>
+
+	<div id="chatroom">
+		<chat></chat>
+	</div>
+</div>

@@ -4,40 +4,176 @@
 	font-size: 1em;
 
 }
+#container{
+	width: 100%;
+	background-color: #c5d5cb;
+}
 #main{
 	width:100%;
 	text-align: center;
-	background-color: #c5d5cb;
 	color: #fff;
 	font-size: 1em;
-
 }
 #main h1{
-	font-size: 3em;
+	font-size: 5em;
+	text-align: center;
 
 }
+
+/*==============Welcome Partial =========================*/
+
+#regForm, #logForm{
+	background-image: url("https://wallpaperscraft.com/image/basketball_basketball_court_wall_building_63199_2560x1440.jpg");
+	background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: 120%;
+}
+#welcome h1{
+	font-size: 4em;
+}
+
+#errMsg{
+	color: #FF9009;
+}
+#regForm{
+	margin-bottom: 10%;
+	display: inline-block;
+	padding: 5%;
+	border: 2pt solid white;
+}
+#regForm h2, #logForm h2{
+	font-size: 1.5em;
+}
+#welcome #regForm button {
+	margin-top: 5%;
+    background-color: transparent;
+	background-attachment: fixed;
+    background-repeat:no-repeat;
+    border: 1pt solid white;
+    cursor:pointer;
+    color: white;
+    overflow: hidden;
+    outline:none;
+}
+#welcome #logForm button {
+	margin-top: 5%;
+    background-color: transparent;
+    background-attachment: fixed;
+    background-repeat:no-repeat;
+    border: 1pt solid black;
+    cursor:pointer;
+    color: black;
+    overflow: hidden;
+    outline:none;
+}
+#welcome .input{
+	color: white;
+	background: transparent;
+	border: 1pt solid white;
+}
+#welcome .input2{
+	background: transparent;
+	border: 1pt solid black;
+}
+#RegForm #button{
+	background: transparent;
+}
+#logForm{
+	color: black;
+	display: inline-block;
+	padding: 5%;
+	border: 2pt solid white;
+}
+
+/*==============end of Welcome Partial =================*/
+
+
+/*==============Dashboard Partial =========================*/
+#dashboard{
+	width: 100%;
+	background-color: #c5d5cb;
+}
+#welcomeMsg h1{
+	display: inline-block;
+	text-align: center;
+	text-align: top;
+	width:100%;
+	font-size: 3em;
+	margin-bottom: 10%;
+}
+/*-court  info links related-*/
 #courts{
+	text-align: center;
 	background-color: #c5d5cb;
 	color: #fff;
-	margin-top: 22%;
+	margin-top: 12%;
 	font-size: 2em;
+	display: inline-block;
 }
-
+#courts p{
+	margin-top: 12%;
+	font-size: 2em;
+	color: #404040;
+}
 #courts ul{
 	list-style: none;
 }
-.chat{
-	border: 1pt solid black;
-	display: inline-block;
-	float: right;
+#courts ul a:link{
+	cursor: hand;
+	color: #fff;
 }
+#courts ul a:active{
+	color: #558C89;
+}
+#courts ul a:hover{
+	cursor: pointer;
+	color: #ECECEA;
+}
+/*-end of court info links related -*/
+
+/*-map related-*/
 #map{
-	display: block;
-	margin-top: 6%;
-	position: absolute; 
-	right: 0px; top: 0px; height: 30%; width: 100%;
+	border: 1pt solid white;
+	display: inline-block;
+	margin-top: 8%;
+	position: absolute;
+	right: 0px; top: 0px; height: 35%; width: 100%;
 
 }
-#user{
-	width:100%;
+/*-end of map related-*/
+
+/*-chatroom related -*/
+#chatroom{
+	vertical-align: top;
+	border: 2pt solid white;
+	display: inline-block;
+	text-align: center;
+	margin-left: 5%;
+	color: black;
+	width: 50%;
+}
+.chatroom .chatInput{
+    background-color: transparent;
+}
+.chatroom p{
+	font-size: 1em;
+	text-align: left;
+	color: #404040;
+}
+/*-end of chatroom related -*/
+/*==============end of Dashboard Partial =========================*/
+
+
+/*==============parkInfo Partial =========================*/
+#parkInfo {
+	display: inline-block
+}
+#parkForm{
+	border: 1pt solid white;
+	background-color: #404040;
+	width: 100%;
+	position: center;
+	font-size: 2em;
+	margin: 2%;
 }

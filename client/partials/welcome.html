@@ -1,31 +1,32 @@
+<h1>ball so hard</h1>
 <div id="welcome">
-	<h1>Welcome</h1>
-	<h2>Register:</h2>
 
-	<h5 ng-bind="usersCtrl.email_err"></h5>
-	<h5 ng-bind="usersCtrl.password_err"></h5>
-	<h5 ng-bind="usersCtrl.alias_err"></h5>
+	<div id="register">
+			<div id="errMsg">
+				<h5 ng-bind="usersCtrl.email_err"></h5>
+				<h5 ng-bind="usersCtrl.password_err"></h5>
+				<h5 ng-bind="usersCtrl.alias_err"></h5>
+			</div>
+		
+			<div id="regForm">
+			<h2>Register:</h2>
+				<form>
+					Name: <input class="input" type="text" ng-model="usersCtrl.newUser.name">
+					E-mail: <input class="input" type="email" ng-model="usersCtrl.newUser.email">
+					Password: <input class="input" type="password" ng-model="usersCtrl.newUser.password">
+					Nickname: <input class="input" type="text" ng-model="usersCtrl.newUser.alias">
+				</form>
+				<button ng-click="usersCtrl.create(usersCtrl.newUser)">Submit</button>
+			</div>
+	</div><!-- end of register -->
 
-	<div id="myform">
+
+	<div id="logForm">
+		<h2>Sign in:</h2>
 		<form>
-			Name: <input type="text" ng-model="usersCtrl.newUser.name">
-			E-mail: <input type="email" ng-model="usersCtrl.newUser.email">
-			Password: <input type="password" ng-model="usersCtrl.newUser.password">
-			Nickname: <input type="text" ng-model="usersCtrl.newUser.alias">
-			<button ng-click="usersCtrl.create(usersCtrl.newUser)">Enter</button>
+			Nickname: <input class="input2" type="text" ng-model="user.alias">
+			Password: <input class="input2" type="password" ng-model="user.password">
 		</form>
-	</div>
-
-
-	<h3>Sign in with your Nickname:</h3>
-	<form>
-		Nickname: <input type="text" ng-model="user.alias">
-		Password: <input type="password" ng-model="user.password">
 		<button class="login" ng-click="usersCtrl.login(user)">Enter</button>
-	</form>
+	</div>
 </div>
-<script type="text/javascript">
-// $(.login).click(function(){
-// 	$(.chat).show();
-// });
-</script>
