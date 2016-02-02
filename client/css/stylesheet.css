@@ -1,0 +1,39 @@
+*{
+	font-family: 'Josefin Sans', sans-serif;
+	text-decoration: none;
+	font-size: 1em;
+}
+#main{
+	width:100%;
+	text-align: center;
+	background-color: #c5d5cb;
+	color: #fff;
+	font-size: 1em;
+
+}
+#main h1{
+	font-size: 3em;
+
+}
+#courts{
+	background-color: #c5d5cb;
+	color: #fff;
+	margin-top: 22%;
+	font-size: 2em;
+}
+
+#courts ul{
+	list-style: none;
+}
+.chat{
+	border: 1pt solid black;
+	display: inline-block;
+	float: right;
+}
+#dashboard #map{
+	display: block;
+	margin-top: 6%;
+	position: absolute; 
+	right: 0px; top: 0px; height: 30%; width: 80%;
+
+}

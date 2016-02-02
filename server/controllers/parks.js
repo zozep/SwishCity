@@ -21,6 +21,7 @@ module.exports = (function() {
 				if(!user.atPark){
 					Park.findOne({google_id: req.body.place_id},function(err, park){
 						if(park){
+							console.log(park)
 							park.users.push(req.body.user_id);
 							park.save(function(err){
 								if(err){
@@ -32,7 +33,7 @@ module.exports = (function() {
 							var newPark = new Park();
 							newPark.name = req.body.title;
 							newPark.google_id = req.body.place_id;
-							newPark.users.push(req.body.user_id);
+							newPark.users.push(user);
 							newPark.save(function(err){
 								if(err)
 									res.json();

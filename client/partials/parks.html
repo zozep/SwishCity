@@ -1,4 +1,5 @@
-<div>Park Info</div>
-<div>{{parksCtrl.park.name}}</div>
-<div>{{parksCtrl.park.formatted_address}}</div>
-<button ng-click="parksCtrl.addToPark(user.id, user.alias)">Add me</button>
+<h1>Park Info</h1>
+<div ng-bind="parksCtrl.park.name"></div>
+<div ng-bind="parksCtrl.park.formatted_address"></div>
+<div ng-bind="parksCtrl.park.formatted_phone_number"></div>
+<button ng-click="parksCtrl.addToPark(parksCtrl.park.name, parksCtrl.park.place_id)">Add me</button>

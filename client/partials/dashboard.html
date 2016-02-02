@@ -1,15 +1,27 @@
-<h1>Hello {{user.alias}}</h1>
-<h2>Courts within 10miles of your current location</h2>
-<div>
-	<li ng-repeat="court in parks">
-		<button ng-click="dashCtrl.parkLoad(court.place_id)"><span ng-bind="court.name"></span></button>
-	 </li>
-</div>
+<div id="dashboard">
+	<div id="user">
+		<h1>Hello {{dashCtrl.user.alias}}</h1>
+	</div>	
 
- <div id="map" style="display: inlind-block; position: absolute; right: 0px; top: 0px; height: 50%; width: 50%;"></div>
- <div ng-show="show">
- 	 <h4 ng-bind="clickedPark.name"></h4>
- 	 <p ng-bind="clickedPark.place_id"></p>
- 	 <p ng-bind="clickedPark.vicinity"><p>
- 	 <button ng-click="dashCtrl.addToPark(clickedPark.name, clickedPark.place_id)">Add me</button>
- </div>
+	<div id="map"></div>
+	
+	<div id="courts">
+		<p>Courts within 5 miles of your current location</p>
+		<ul>
+			<li ng-repeat="court in parks">
+				<button ng-click="dashCtrl.parkLoad(court.place_id)">
+					<span ng-bind="court.name"></span>
+				</button>
+			</li>
+		</ul>
+	</div>
+
+
+	 <div ng-show="show">
+	 	 <h4 ng-bind="clickedPark.name"></h4>
+	 	 <p ng-bind="clickedPark.place_id"></p>
+	 	 <p ng-bind="clickedPark.vicinity"></p>
+	 	 <button ng-click="dashCtrl.addToPark(clickedPark.name, clickedPark.place_id)">Add me</button>
+	 </div>
+</div>
+<chat></chat>

@@ -10,13 +10,15 @@ myAngularObject.controller("UsersController", function(UserFactory, $location){
 			_this.user = user
 		})
 	}
-	this.create = function(newUser){
-		UserFactory.create(newUser, function(response){
+	this.create = function(){
+		console.log(_this.newUser);
+		UserFactory.create(_this.newUser, function(response){
 			if(response.errors){
 				_this.email_err = (response.errors.email) ? response.errors.email.message : "";
 				_this.alias_err = (response.errors.alias) ? response.errors.alias.message : "";
 				_this.password_err = (response.errors.password) ? response.errors.password.message : "";
 			} else {
+				_this.newUser = {};
 				UserFactory.register(response);
 			}
 		})
@@ -42,34 +44,27 @@ myAngularObject.controller("UsersController", function(UserFactory, $location){
 	}
 })
 
-// myAngularObject.controller("EditController", function(UserFactory, $routeParams){
-// 	var _this = this;
+myAngularObject.controller("ChatController", function(UserFactory){
+	var _this = this;
 
-// 	function getOne(){
-// 		UserFactory.getOne($routeParams.id, function(user){
-// 			_this.user = user;
-// 		})
-// 	}
-// 	getOne();
+	_this.homePage = function(){
+		UserFactory.loggedUser(function(user){
+			console.log(user)
+			return true
+		})
+	}
+})
 
-// 	this.update = function(){
-
-// 		UserFactory.update(_this.user, function(user){
-// 			_this.user = user;
-// 		});
-// 	}
-// })
 
 myAngularObject.controller("DashboardController", function(UserFactory, ParkFactory, DashboardFactory, $scope){
 	console.log("DashboardController loaded...");
 	var _this = this;
-
 	$scope.show = false;
 	$scope.clickedPark = {};
 
 	UserFactory.loggedUser(function(user){
 		console.log("loggedUser callback was called");
-		// _this.user = user
+		_this.user = user
 		console.log("here, user from loggedUser method: ", user)
 		if(user){
 		console.log(user);
@@ -101,7 +96,7 @@ myAngularObject.controller("DashboardController", function(UserFactory, ParkFact
 	  // Specify location, radius and place types for your Places API search.
 	  var request = {
 	    location: initposition,
-	    radius: 16093,
+	    radius: 8046,
 	    keyword: 'basketball park'
 	  };
 
@@ -145,10 +140,13 @@ myAngularObject.controller("ParksController", function(UserFactory, ParkFactory,
 	function callback(result, status) {
   		if (status == google.maps.places.PlacesServiceStatus.OK) {
 		   _this.park = result;
-		   console.log('results', _this.park);
 		   $scope.$apply();
+		   console.log('results', _this.park);
 		
 		}
+	}
+	this.addToPark = function(title, id){
+		ParkFactory.addToPark(title, id, $scope.user._id);
 	}
 })
 

@@ -1,27 +1,31 @@
-<h1>Welcome</h1>
-<h3>Register:</h3>
+<div id="welcome">
+	<h1>Welcome</h1>
+	<h2>Register:</h2>
 
-<h5 ng-bind="usersCtrl.email_err"></h5>
-<h5 ng-bind="usersCtrl.password_err"></h5>
-<h5 ng-bind="usersCtrl.alias_err"></h5>
+	<h5 ng-bind="usersCtrl.email_err"></h5>
+	<h5 ng-bind="usersCtrl.password_err"></h5>
+	<h5 ng-bind="usersCtrl.alias_err"></h5>
 
-<div id="myform">
+	<div id="myform">
+		<form>
+			Name: <input type="text" ng-model="usersCtrl.newUser.name">
+			E-mail: <input type="email" ng-model="usersCtrl.newUser.email">
+			Password: <input type="password" ng-model="usersCtrl.newUser.password">
+			Nickname: <input type="text" ng-model="usersCtrl.newUser.alias">
+			<button ng-click="usersCtrl.create(usersCtrl.newUser)">Enter</button>
+		</form>
+	</div>
+
+
+	<h3>Sign in with your Nickname:</h3>
 	<form>
-		Name: <input type="text" ng-model="newUser.name">
-		E-mail: <input type="email" ng-model="newUser.email">
-		Password: <input type="password" ng-model="newUser.password">
-		Nickname: <input type="text" ng-model="newUser.alias">
-		<button ng-click="usersCtrl.create(newUser)">Enter</button>
+		Nickname: <input type="text" ng-model="user.alias">
+		Password: <input type="password" ng-model="user.password">
+		<button class="login" ng-click="usersCtrl.login(user)">Enter</button>
 	</form>
 </div>
-
-
-
-<form>
-<h3>Sign in with your Nickname:</h3>
-<form ng->
-Nickname: <input type="text" ng-model="user.alias">
-Password: <input type="password" ng-model="user.password">
-
-<button ng-click="usersCtrl.login(user)">Enter</button>
-</form>
+<script type="text/javascript">
+$(.login).click(function(){
+	$(.chat).show();
+});
+</script>
