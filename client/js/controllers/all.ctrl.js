@@ -44,18 +44,6 @@ myAngularObject.controller("UsersController", function(UserFactory, $location){
 	}
 })
 
-myAngularObject.controller("ChatController", function(UserFactory){
-	var _this = this;
-
-	_this.homePage = function(){
-		UserFactory.loggedUser(function(user){
-			console.log(user)
-			return true
-		})
-	}
-})
-
-
 myAngularObject.controller("DashboardController", function(UserFactory, ParkFactory, DashboardFactory, $scope){
 	console.log("DashboardController loaded...");
 	var _this = this;
@@ -145,11 +133,18 @@ myAngularObject.controller("ParksController", function(UserFactory, ParkFactory,
 		
 		}
 	}
-	this.addToPark = function(title, id){
-		ParkFactory.addToPark(title, id, $scope.user._id);
+	this.addToPark = function(){
+		_this.park.user = $scope.user._id;
+		ParkFactory.addToPark(_this.park);
+
 	}
 })
-
+myAngularObject.directive('chat', function(){
+    return{
+        restrict: "E",
+        templateUrl: 'partials/chat.html'
+    }
+})
 
 // 	UserFactory.loggedUser(function(user){
 // 		_this.user = user;

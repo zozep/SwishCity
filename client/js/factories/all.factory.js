@@ -99,8 +99,8 @@ myAngularObject.factory('ParkFactory', function($http, $location) {
   		}
   	}
 
-  	factory.addToPark = function(title, id, user_id){
-  		$http.post("/add/park", {title: title, place_id: id, user_id: user_id}).success(function(response){
+  	factory.addToPark = function(park){
+  		$http.post("/add/park", park).success(function(response){
   			console.log(response);
   		})
   	}

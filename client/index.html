@@ -15,17 +15,18 @@
 	<script type="text/javascript" src="/socket.io/socket.io.js"></script>
 </head>
 <body ng-app="myApp">
- 	<div id="main" ng-view="" style="width: 80%;"></div>
+ 	<div id="main" ng-view=""></div>
 </body>
 
 <script type='text/javascript'>
     socket = io.connect();
-    $("#chat_stuff").submit(function(){
+
+    $(document).on("submit","#chat_stuff", function(){
         socket.emit("new message",$("#message").val());
         $("#message").val("");
         return false;
-    //all the line above does is make it so the page does not reload when someone submits the form
     })
+
     socket.on("chat connect", function(data){
         // console.log(data)
         var str = ""

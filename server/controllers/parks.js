@@ -17,9 +17,14 @@ module.exports = (function() {
 			})
 		},
 		add: function(req, res){
+			console.log(req.body);
 			User.findOne({_id: req.body.user_id}, function(err, user){
+
+				console.log(user);
+
 				if(!user.atPark){
 					Park.findOne({google_id: req.body.place_id},function(err, park){
+						console.log(park);
 						if(park){
 							console.log(park)
 							park.users.push(req.body.user_id);

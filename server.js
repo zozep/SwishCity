@@ -27,7 +27,6 @@ var message_arr = [];
 var io = require("socket.io").listen(server);
 
 io.sockets.on("connection", function(socket){
-	socket.emit("chat connect", message_arr);
 	console.log(">>>>>>>>>>>>>>>>>>");
 	console.log("a user has connected with socket!");
 	console.log("<<<<<<<<<<<<<<<<<<");
@@ -40,6 +39,7 @@ io.sockets.on("connection", function(socket){
 
 	socket.on("new user", function(name){
 		socket.username = name;
+		socket.emit("chat connect", message_arr);
 		socket.broadcast.emit("new user notification", name);
 	})
 

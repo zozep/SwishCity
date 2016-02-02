@@ -24,10 +24,3 @@ myAngularObject.config(function ($routeProvider) {
         redirectTo: "/"
     })   
 });
-
-myAngularObject.directive('chat', function(){
-    return{
-        restrict: "E",
-        templateUrl: 'partials/chat.html'
-    }
-})

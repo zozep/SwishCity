@@ -2,6 +2,7 @@
 	font-family: 'Josefin Sans', sans-serif;
 	text-decoration: none;
 	font-size: 1em;
+
 }
 #main{
 	width:100%;
@@ -30,10 +31,13 @@
 	display: inline-block;
 	float: right;
 }
-#dashboard #map{
+#map{
 	display: block;
 	margin-top: 6%;
 	position: absolute; 
-	right: 0px; top: 0px; height: 30%; width: 80%;
+	right: 0px; top: 0px; height: 30%; width: 100%;
 
+}
+#user{
+	width:100%;
 }
