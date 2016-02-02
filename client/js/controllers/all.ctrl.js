@@ -53,7 +53,6 @@ myAngularObject.controller("DashboardController", function(UserFactory, ParkFact
 	UserFactory.loggedUser(function(user){
 		console.log("loggedUser callback was called");
 		_this.user = user
-		console.log("here, user from loggedUser method: ", user)
 		if(user){
 		console.log(user);
 			socket.emit("new user", user.alias);
@@ -134,8 +133,15 @@ myAngularObject.controller("ParksController", function(UserFactory, ParkFactory,
 		}
 	}
 	this.addToPark = function(){
-		_this.park.user = $scope.user._id;
-		ParkFactory.addToPark(_this.park);
+
+		var addUserToPark = {
+			user: $scope.user._id,
+			name: _this.park.name,
+			address: _this.park.formatted_address,
+			phone_number: _this.park.formatted_phone_number
+		} 
+
+		ParkFactory.addToPark(addUserToPark);
 
 	}
 })

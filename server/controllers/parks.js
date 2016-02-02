@@ -17,17 +17,21 @@ module.exports = (function() {
 			})
 		},
 		add: function(req, res){
+
 			console.log(req.body);
-			User.findOne({_id: req.body.user_id}, function(err, user){
 
-				console.log(user);
-
+			User.findOne({_id: req.body.user}, function(err, user){
 				if(!user.atPark){
+					user.atPark = true;
+					user.save();
+
 					Park.findOne({google_id: req.body.place_id},function(err, park){
 						console.log(park);
 						if(park){
-							console.log(park)
 							park.users.push(req.body.user_id);
+							park.address = req.body.address;
+							park.name = req.body.name;
+
 							park.save(function(err){
 								if(err){
 									console.log(err);
@@ -38,7 +42,11 @@ module.exports = (function() {
 							var newPark = new Park();
 							newPark.name = req.body.title;
 							newPark.google_id = req.body.place_id;
+
 							newPark.users.push(user);
+							newPark.address = req.body.address;
+							newPark.name = req.body.name;
+
 							newPark.save(function(err){
 								if(err)
 									res.json();
@@ -47,16 +55,6 @@ module.exports = (function() {
 							})
 						}
 					})
-				}
-				else{
-					Park.findUser(req.body.user_id , function(request,res){
-						if(req.body.user_id){
-							res.json({message: "you've already committed to play at a park, please remove yourself from that park first", google_id:request.google_id})
-						}
-
-
-					})
-
 				}
 			})
 		}
