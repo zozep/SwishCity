@@ -22,6 +22,7 @@ module.exports = (function() {
 			})
 		},
 		login: function(req, res){
+			console.log(req)
 			User.findOne({alias: req.body.alias}, function(err, user){
 				if(!user){
 					return res.json({err: "User is not found!"});

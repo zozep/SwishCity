@@ -24,6 +24,12 @@ myAngularObject.factory('UserFactory', function($http, $location) {
 				}
 			})
 		},
+		// refresh: function(user, callback){
+		// 	$http.post("/login", user).success(function(response){
+		// 		factory.sessionUser = response;
+		// 		callback();
+		// 	})
+		// },
 		logout: function(){
 			sessionUser = null;
 			$location.path("/");
@@ -102,6 +108,11 @@ myAngularObject.factory('ParkFactory', function($http, $location) {
   	factory.addToPark = function(park){
   		$http.post("/add/park", park).success(function(response){
   			console.log(response);
+  		})
+  	}
+  	factory.removeUserFromPark = function(park){
+  		$http.post("/remove/park", park).success(function(response){
+  			alert(response.message);
   		})
   	}
 

@@ -142,7 +142,24 @@ myAngularObject.controller("ParksController", function(UserFactory, ParkFactory,
 		} 
 
 		ParkFactory.addToPark(addUserToPark);
+		// UserFactory.refresh(function(user){
+		// 	$scope.user = user;
+		// })
 
+	}
+	this.removeFromPark = function(){
+		var removeUserFromPark = {
+			user: $scope.user.alias,
+			park_id: $scope.park
+		}
+		// if(!$scope.user.atPark){
+		// 	alert("User not at a park!")
+		// }else{
+		ParkFactory.removeUserFromPark(removeUserFromPark);
+		// }
+		// UserFactory.refresh(function(user){
+		// 	$scope.user = user;
+		// })
 	}
 })
 myAngularObject.directive('chat', function(){

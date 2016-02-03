@@ -25,6 +25,7 @@ module.exports = function(app) {
 	app.post('/login', users.login);
 
 app.post('/add/park', parks.add);
+app.post('/remove/park', parks.remove);
 
 // //DASHBOARD
 //  	// Index

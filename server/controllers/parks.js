@@ -87,6 +87,26 @@ module.exports = (function() {
 					})
 				}
 			})
+		},
+		remove: function(req, res){
+
+			User.findOne({alias: req.body.user}, function(err, user){
+				if(!user.atPark){
+					res.json({message:"User not at a park!"})
+				}else{
+					Park.findOneAndUpdate({"google_id" : req.body.park_id}, {$pull: {"users": req.body.user}}, function(err, park){
+						if(err){
+							res.json({message:"User not found at park!"})
+						}else{
+							User.findOne({alias: req.body.user}, function(err, user){
+								user.atPark = false;
+								user.save();
+							})
+						res.json({message:"Removed from park!"})
+						}
+					})
+				}
+			})
 		}
 		// edit: function(req, res){
 		// 	console.log("Server / Ctrl / Users - Edit")
