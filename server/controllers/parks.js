@@ -25,33 +25,29 @@ module.exports = (function() {
 					user.atPark = true;
 					user.save();
 
-					Park.findOne({google_id: req.body.place_id},function(err, park){
-						console.log(park);
+					Park.findOne({google_id: req.body.park_id},function(err, park){
+						//console.log(park);
 						if(park){
 							park.users.push(req.body.user_id);
-							park.address = req.body.address;
-							park.name = req.body.name;
 
 							park.save(function(err){
 								if(err){
 									console.log(err);
 								}
-								res.json({message: "added"});
+								res.json({message: "user added to park"});
 							})
 						} else {
 							var newPark = new Park();
-							newPark.name = req.body.title;
-							newPark.google_id = req.body.place_id;
+							newPark.name = req.body.name;
+							newPark.google_id = req.body.park_id;
 
 							newPark.users.push(user);
-							newPark.address = req.body.address;
-							newPark.name = req.body.name;
 
 							newPark.save(function(err){
 								if(err)
 									res.json();
 								else
-									res.json({message: "added park and user"});
+									res.json({message: "added new park and user to park"});
 							})
 						}
 					})

@@ -119,6 +119,7 @@ myAngularObject.controller("ParksController", function(UserFactory, ParkFactory,
 	UserFactory.loggedUser(function(user){
 		$scope.user = user;
 	})
+	// console.log($scope)
 	var returnedParkInfo = {};
 
 	var service = new google.maps.places.PlacesService(document.createElement('div'));
@@ -128,7 +129,7 @@ myAngularObject.controller("ParksController", function(UserFactory, ParkFactory,
   		if (status == google.maps.places.PlacesServiceStatus.OK) {
 		   _this.park = result;
 		   $scope.$apply();
-		   console.log('results', _this.park);
+		   //console.log('results', _this.park);
 		
 		}
 	}
@@ -137,8 +138,7 @@ myAngularObject.controller("ParksController", function(UserFactory, ParkFactory,
 		var addUserToPark = {
 			user: $scope.user._id,
 			name: _this.park.name,
-			address: _this.park.formatted_address,
-			phone_number: _this.park.formatted_phone_number
+			park_id: $scope.park
 		} 
 
 		ParkFactory.addToPark(addUserToPark);
