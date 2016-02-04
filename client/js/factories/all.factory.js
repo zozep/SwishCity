@@ -24,12 +24,7 @@ myAngularObject.factory('UserFactory', function($http, $location) {
 				}
 			})
 		},
-		// refresh: function(user, callback){
-		// 	$http.post("/login", user).success(function(response){
-		// 		factory.sessionUser = response;
-		// 		callback();
-		// 	})
-		// },
+
 		logout: function(){
 			sessionUser = null;
 			$location.path("/");
@@ -61,6 +56,11 @@ myAngularObject.factory('UserFactory', function($http, $location) {
 			$http.delete("/users/" + user._id, user).success(function(){
 				callback();
 			})
+		},
+		getUsersRequested: function(users_ids, callback){
+			$http.post('/usersRequested', users_ids).success(function(users){
+				callback(users)
+			})
 		}
 	}
 	return factory;
@@ -74,7 +74,7 @@ myAngularObject.factory('ParkFactory', function($http, $location) {
 
 	factory.storeParks = function(newParks){
 		parks = newParks;
-		console.log(parks)
+		// console.log(parks)
 	}
 
 	factory.getParks = function(callback){
@@ -89,6 +89,30 @@ myAngularObject.factory('ParkFactory', function($http, $location) {
 	factory.getPark = function(){
 		return _this.park;
 	}
+
+	factory.getUsers = function(park_id, callback){
+		$http.post("/park/users", {_id:park_id}).success(function(response){
+			// console.log(response);
+			callback(response);
+		})
+	}
+
+	// factory.getUsers = function(park_id, callback){
+	// 	console.log("1");
+	// 	$http.post("/add/park", park_id).success(function(response){
+	// 		console.log("2");
+	// 		callback(response.users);
+	// 	})
+	// }
+
+	// factory.getUserList = function(park_id, callback){
+	// 	console.log("1");
+	// 	$http.post("/users/getList", park_id).success(function(response){
+	// 		console.log("2");
+	// 		callback(response.users);
+	// 	})
+	// }
+
 
 	factory.geolocation = function(callback){
 		if (navigator.geolocation) {
@@ -106,8 +130,9 @@ myAngularObject.factory('ParkFactory', function($http, $location) {
   	}
 
   	factory.addToPark = function(park){
+  		// console.log(park);
   		$http.post("/add/park", park).success(function(response){
-  			console.log(response);
+  			// console.log(response);
   		})
   	}
   	factory.removeUserFromPark = function(park){

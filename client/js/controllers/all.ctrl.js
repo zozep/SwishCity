@@ -38,26 +38,27 @@ myAngularObject.controller("UsersController", function(UserFactory, $location){
 		});
 	}
 
-	this.logout = function(){
-		UserFactory.logout();
-		DashboardFactory.logout();
-	}
+	// this.logout = function(){
+	// 	UserFactory.logout();
+	// 	DashboardFactory.logout();
+	// }
 })
 
 myAngularObject.controller("DashboardController", function(UserFactory, ParkFactory, DashboardFactory, $scope){
-	console.log("DashboardController loaded...");
+	// console.log("DashboardController loaded...");
 	var _this = this;
 	$scope.show = false;
 	$scope.clickedPark = {};
 
 	UserFactory.loggedUser(function(user){
-		console.log("loggedUser callback was called");
+		// console.log("loggedUser callback was called");
 		_this.user = user
+
 		if(user){
-		console.log(user);
+		// console.log(user);
 			socket.emit("new user", user.alias);
 			ParkFactory.geolocation(function(position){
-				console.log("geolocation callback was called");
+				// console.log("geolocation callback was called");
 				DashboardFactory.createMap({latitude: position.coords.latitude, longitude: position.coords.longitude}, 11);
 				initialize(position.coords.latitude, position.coords.longitude);
 	 		})
@@ -116,10 +117,18 @@ myAngularObject.controller("DashboardController", function(UserFactory, ParkFact
 myAngularObject.controller("ParksController", function(UserFactory, ParkFactory, $scope){
 	var _this = this;
 	$scope.park = ParkFactory.getPark()
+
+	ParkFactory.getUsers($scope.park, function(response){
+		$scope.users = response.users;
+		console.log($scope.users)
+	})
+	
+
 	UserFactory.loggedUser(function(user){
 		$scope.user = user;
 	})
-	// console.log($scope)
+
+	//console.log($scope.park)
 	var returnedParkInfo = {};
 
 	var service = new google.maps.places.PlacesService(document.createElement('div'));
@@ -133,6 +142,15 @@ myAngularObject.controller("ParksController", function(UserFactory, ParkFactory,
 		
 		}
 	}
+	// console.log("Park ID currently on the page... ", ParkFactory.getPark());
+
+	// ParkFactory.getUserList(ParkFactory.getPark(), function(users_ids){
+	// 	console.log("Users from the Park Object", users_ids);
+	// 	UserFactory.getUsersRequested(users_ids, function(users){
+	// 		_this.users = users
+	// 	})
+	// });
+
 	this.addToPark = function(){
 
 		var addUserToPark = {
@@ -140,27 +158,17 @@ myAngularObject.controller("ParksController", function(UserFactory, ParkFactory,
 			name: _this.park.name,
 			park_id: $scope.park
 		} 
-
 		ParkFactory.addToPark(addUserToPark);
-		// UserFactory.refresh(function(user){
-		// 	$scope.user = user;
-		// })
-
 	}
 	this.removeFromPark = function(){
 		var removeUserFromPark = {
 			user: $scope.user.alias,
 			park_id: $scope.park
 		}
-		// if(!$scope.user.atPark){
-		// 	alert("User not at a park!")
-		// }else{
 		ParkFactory.removeUserFromPark(removeUserFromPark);
-		// }
-		// UserFactory.refresh(function(user){
-		// 	$scope.user = user;
-		// })
 	}
+
+
 })
 myAngularObject.directive('chat', function(){
     return{

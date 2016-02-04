@@ -6,8 +6,12 @@
 		<div ng-bind="parksCtrl.park.formatted_phone_number"></div>
 		<button ng-click="parksCtrl.addToPark()">Add me</button>
 		<button ng-click="parksCtrl.removeFromPark()">Remove me</button>
-
 	</div>
+		<h2>List of users in this park:</h2>
+			<ul>
+				<li ng-repeat="user in users">{{user}}</li>
+
+			</ul>
 
 	<div id="chatroom">
 		<chat></chat>

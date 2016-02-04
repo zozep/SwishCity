@@ -107,6 +107,12 @@ module.exports = (function() {
 					})
 				}
 			})
+		},
+		findUsers: function(req, res){
+			console.log(req)
+			Park.findOne({"google_id": req.body._id}, function(err, park){
+				res.json(park);
+			})
 		}
 		// edit: function(req, res){
 		// 	console.log("Server / Ctrl / Users - Edit")

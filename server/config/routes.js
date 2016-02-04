@@ -24,9 +24,6 @@ module.exports = function(app) {
 	// Log in
 	app.post('/login', users.login);
 
-app.post('/add/park', parks.add);
-app.post('/remove/park', parks.remove);
-
 // //DASHBOARD
 //  	// Index
 // 	app.get('/dashboard', dashboard.index);
@@ -39,7 +36,11 @@ app.post('/remove/park', parks.remove);
 
 
 //PARKS
+	app.post('/add/park', parks.add);
 
+	app.post('/remove/park', parks.remove);
+	
+	app.post('/park/users', parks.findUsers);
 	// //Index
 	// app.get('/parks', parks.index);
 
