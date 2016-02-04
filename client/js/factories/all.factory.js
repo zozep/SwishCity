@@ -66,6 +66,7 @@ myAngularObject.factory('UserFactory', function($http, $location) {
 	return factory;
 })
 
+
 myAngularObject.factory('ParkFactory', function($http, $location) {
 	var _this = this;
 	factory = {};
@@ -97,23 +98,6 @@ myAngularObject.factory('ParkFactory', function($http, $location) {
 		})
 	}
 
-	// factory.getUsers = function(park_id, callback){
-	// 	console.log("1");
-	// 	$http.post("/add/park", park_id).success(function(response){
-	// 		console.log("2");
-	// 		callback(response.users);
-	// 	})
-	// }
-
-	// factory.getUserList = function(park_id, callback){
-	// 	console.log("1");
-	// 	$http.post("/users/getList", park_id).success(function(response){
-	// 		console.log("2");
-	// 		callback(response.users);
-	// 	})
-	// }
-
-
 	factory.geolocation = function(callback){
 		if (navigator.geolocation) {
     		navigator.geolocation.getCurrentPosition(function(position) {
@@ -144,6 +128,7 @@ myAngularObject.factory('ParkFactory', function($http, $location) {
   	return factory;
 
 });
+
 
 myAngularObject.factory('DashboardFactory', function($http) {
 

@@ -142,14 +142,6 @@ myAngularObject.controller("ParksController", function(UserFactory, ParkFactory,
 		
 		}
 	}
-	// console.log("Park ID currently on the page... ", ParkFactory.getPark());
-
-	// ParkFactory.getUserList(ParkFactory.getPark(), function(users_ids){
-	// 	console.log("Users from the Park Object", users_ids);
-	// 	UserFactory.getUsersRequested(users_ids, function(users){
-	// 		_this.users = users
-	// 	})
-	// });
 
 	this.addToPark = function(){
 
@@ -160,6 +152,7 @@ myAngularObject.controller("ParksController", function(UserFactory, ParkFactory,
 		} 
 		ParkFactory.addToPark(addUserToPark);
 	}
+	
 	this.removeFromPark = function(){
 		var removeUserFromPark = {
 			user: $scope.user.alias,
