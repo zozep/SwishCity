@@ -56,11 +56,6 @@ myAngularObject.factory('UserFactory', function($http, $location) {
 			$http.delete("/users/" + user._id, user).success(function(){
 				callback();
 			})
-		},
-		getUsersRequested: function(users_ids, callback){
-			$http.post('/usersRequested', users_ids).success(function(users){
-				callback(users)
-			})
 		}
 	}
 	return factory;

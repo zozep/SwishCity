@@ -19,8 +19,8 @@ require("./server/config/mongoose.js");
 require("./server/config/routes.js")(app);
 
 //Routes Config
-var server = app.listen(9996, function() {
-  console.log("server is running on port 9996...");
+var server = app.listen(9995, function() {
+  console.log("server is running on port 9995...");
 })
 var message_arr = [];
 

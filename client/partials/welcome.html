@@ -2,27 +2,27 @@
 <div id="welcome">
 
 	<div id="register">
-			<div id="errMsg">
-				<h5 ng-bind="usersCtrl.email_err"></h5>
-				<h5 ng-bind="usersCtrl.password_err"></h5>
-				<h5 ng-bind="usersCtrl.alias_err"></h5>
-			</div>
-		
-			<div id="regForm">
-			<h2>Register:</h2>
-				<form>
-					Name: <input class="input" type="text" ng-model="usersCtrl.newUser.name">
-					E-mail: <input class="input" type="email" ng-model="usersCtrl.newUser.email">
-					Password: <input class="input" type="password" ng-model="usersCtrl.newUser.password">
-					Nickname: <input class="input" type="text" ng-model="usersCtrl.newUser.alias">
-				</form>
-				<button ng-click="usersCtrl.create(usersCtrl.newUser)">Submit</button>
-			</div>
+		<div id="errMsg">
+			<h5 ng-bind="usersCtrl.email_err"></h5>
+			<h5 ng-bind="usersCtrl.password_err"></h5>
+			<h5 ng-bind="usersCtrl.alias_err"></h5>
+		</div>
+	
+		<div id="regForm">
+		<h2>Register</h2>
+			<form>
+				Name: <input class="input" type="text" ng-model="usersCtrl.newUser.name">
+				E-mail: <input class="input" type="email" ng-model="usersCtrl.newUser.email">
+				Password: <input class="input" type="password" ng-model="usersCtrl.newUser.password">
+				Nickname: <input class="input" type="text" ng-model="usersCtrl.newUser.alias">
+			</form>
+			<button ng-click="usersCtrl.create(usersCtrl.newUser)">Submit</button>
+		</div>
 	</div><!-- end of register -->
 
 
 	<div id="logForm">
-		<h2>Sign in:</h2>
+		<h2>Sign in</h2>
 		<form>
 			Nickname: <input class="input2" type="text" ng-model="user.alias">
 			Password: <input class="input2" type="password" ng-model="user.password">
