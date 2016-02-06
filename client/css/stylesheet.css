@@ -1,51 +1,51 @@
 *{
-	font-family: 'Josefin Sans', sans-serif;
+	font-family: 'Josefin Sans', 'Open Sans', sans-serif;
 	text-decoration: none;
 	font-size: 1em;
 	margin: 0 auto;
 	padding: 0 auto;
-
 }
-#container{
+
+#main #welcome{
 	width: 100%;
 	background-color: #c5d5cb;
-}
-#main{
-	width:100%;
-	height: 100%;
-	text-align: center;
-	color: #fff;
-	font-size: 1em;
-	margin-top: 5%;
-}
-#main h1{
-	font-size: 5em;
-	text-align: center;
-
-}
-
-/*==============Welcome Partial =========================*/
-
-#container{
 	background-image: url("https://images.unsplash.com/photo-1448542146881-1d78dfb2f674?crop=entropy&fit=crop&fm=jpg&h=1450&ixjsv=2.1.0&ixlib=rb-0.3.5&q=80&w=2575");
 	background-attachment: fixed;
     background-repeat: no-repeat;
-    background-position: center;
-    background-size: 100%;
-    width:100%;
+    background-position: center center;
 }
+#container #main{
+	width:100%;
+	max-height: inherit;
+	text-align: center;
+	color: #fff;
+	font-size: 1em;
+}
+/*==============Welcome Partial =========================*/
 #welcome h1{
-	font-size: 4em;
+	font-size: 7em;
+	padding-top: 2%;
+	padding-bottom: 2%;
+	text-align: center;
+	vertical-align: top;
+	color: #247BA0;
+	opacity: .8;
 }
 
 #errMsg{
-	color: #FF9009;
+	font-size: 2em;
+	color: rgb(254,78,124);
 }
-#regForm{
-	margin-bottom: 10%;
+
+#regForm, #logForm{
+	padding-top: 2%;
+	padding-bottom: 10%;
+	margin-top:5%;
 	display: inline-block;
-	padding: 5%;
+	padding: 2%;
 	border: 2pt solid white;
+	background-color: rgba(59,184,140, 0.3);
+	background: transparent .3;
 }
 #regForm h2, #logForm h2{
 	margin-bottom: 2%;
@@ -55,69 +55,85 @@
 #welcome #logForm button, #welcome #regForm button {
 	margin-top: 5%;
     background-color: transparent;
-    background-attachment: fixed;
-    background-repeat:no-repeat;
+
     border: 1pt solid white;
     cursor:pointer;
     color: white;
     overflow: hidden;
     outline: gray;
 }
-#welcome .input{
+#logForm{
+	margin-bottom: 25%;
+}
+#welcome #logForm button:hover, #welcome #regForm button:hover{
+	background-color: #5c6b73;
+}
+#welcome .input, #welcome .input2{
 	color: white;
 	background: transparent;
 	border: 1pt solid white;
-}
-#welcome .input2{
-	background: transparent;
-	border: 1pt solid white;
+	font-weight: bold;
 }
 #RegForm #button{
 	background: transparent;
-}
-#logForm{
-	color: black;
-	display: inline-block;
-	padding: 5%;
-	border: 2pt solid white;
 }
 
 /*==============end of Welcome Partial =================*/
 
 
 /*==============Dashboard Partial =========================*/
-#dashboard{
+#main #dashboard{
 	width: 100%;
+	height: 100%;
 	background-color: #c5d5cb;
+	display: block;
+	position: relative;
 }
-#welcomeMsg h1{
+#courts #welcomeMsg{
 	display: inline-block;
 	text-align: center;
-	text-align: top;
 	width:100%;
+	height: 10%;
+	margin-top: 4%;
 	font-size: 3em;
-	margin-bottom: 10%;
+	margin-bottom: 3%;
 }
+
+/*-map related-*/
+#map{
+	border-bottom: 2pt solid white;
+	border-top: 2pt solid white;
+	display: block;
+	position: absolute;
+	top: 0; right: 0;
+	height: inherit;
+	width: 100%;
+}
+/*-end of map related-*/
+
 /*-court  info links related-*/
 #courts{
+	height: 50%;
 	text-align: center;
+	display: block;
 	background-color: rgb(116,206,124);
 	width: 100%;
 	color: #fff;
-	margin-top: 5%;
 	font-size: 2em;
-	display: inline-block;
+	position: relative;
 }
 #courts p{
-	margin-top: 12%;
-	font-size: 2em;
+	font-size: 3em;
 	color: #404040;
+	padding-bottom: 2%;
 }
 #courts ul{
+	padding: 1%;
 	list-style: none;
 }
 #courts ul a:link{
 	cursor: hand;
+	padding:1%;
 	color: #fff;
 }
 #courts ul a:active{
@@ -129,45 +145,49 @@
 }
 /*-end of court info links related -*/
 
-/*-map related-*/
-#map{
-	border: 1pt solid white;
-	display: inline-block;
-	margin-top: 5%;
-	position: absolute;
-	right: 0px; top: 0px; height: 40%; width: 100%;
-
-}
-/*-end of map related-*/
-
 /*-chatroom related -*/
 #chatroom{
-	vertical-align: top;
-	border: 2pt solid white;
-	display: inline-block;
+	height: 10%;
+	border-top: 2pt solid white;
+	border-top: 2pt solid white;
+	display: block;
+	margin-top: 30%;
+	padding-bottom: 2%;
 	text-align: center;
-	margin-left: 5%;
-	color: black;
-	width: 50%;
+	width: 100%;
+	background-color: #58A4B0;
+	position: relative; 
+}
+.chatroom #m{
+	padding: 2%;
+	background-color: transparent;
 }
 .chatroom .chatInput{
     background-color: transparent;
 }
 .chatroom p{
+	font-weight: bold;
 	font-size: 1em;
-	text-align: left;
+	text-align: center;
 	color: #404040;
 }
 .chatroom #message{
-	background-color: transparent;
-	border: 1pt solid white;
+	background-color: rgba(35,35,35, 0.3); 
+	background: transparent 0.3;
+	border: 2pt solid white;
+	width: 50%;
+	margin-bottom: 5%;
 }
 .chatroom #submit{
 	background-color: transparent;
-	border: 1pt solid white;
+	border: 2pt solid white;
 	color: white;
-	margin-bottom: 2%;
 }
+.chatroom #submit:hover{
+	background-color: rgba(35,35,35, 0.6);
+    background: transparent 0.6;
+}
+
 /*-end of chatroom related -*/
 /*==============end of Dashboard Partial =========================*/
 

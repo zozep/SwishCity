@@ -16,7 +16,7 @@ var aliasValidator = [
 var pwValidator = [
   validate({
     validator: 'isLength',
-    arguments: [6, 15],
+    arguments: [5, 15],
     message: 'Password should be between {ARGS[0]} and {ARGS[1]} characters'
   }),
   validate({

@@ -59,7 +59,7 @@ myAngularObject.controller("DashboardController", function(UserFactory, ParkFact
 			socket.emit("new user", user.alias);
 			ParkFactory.geolocation(function(position){
 				// console.log("geolocation callback was called");
-				DashboardFactory.createMap({latitude: position.coords.latitude, longitude: position.coords.longitude}, 11);
+				DashboardFactory.createMap({latitude: position.coords.latitude, longitude: position.coords.longitude}, 12);
 				initialize(position.coords.latitude, position.coords.longitude);
 	 		})
 		}

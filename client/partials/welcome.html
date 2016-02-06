@@ -1,6 +1,5 @@
-<h1>ball so hard</h1>
 <div id="welcome">
-
+<h1><i>swish</i></h1>
 	<div id="register">
 		<div id="errMsg">
 			<h5 ng-bind="usersCtrl.email_err"></h5>
@@ -14,7 +13,7 @@
 				Name: <input class="input" type="text" ng-model="usersCtrl.newUser.name">
 				E-mail: <input class="input" type="email" ng-model="usersCtrl.newUser.email">
 				Password: <input class="input" type="password" ng-model="usersCtrl.newUser.password">
-				Nickname: <input class="input" type="text" ng-model="usersCtrl.newUser.alias">
+				Alias: <input class="input" type="text" ng-model="usersCtrl.newUser.alias">
 			</form>
 			<button ng-click="usersCtrl.create(usersCtrl.newUser)">Submit</button>
 		</div>
@@ -24,7 +23,7 @@
 	<div id="logForm">
 		<h2>Sign in</h2>
 		<form>
-			Nickname: <input class="input2" type="text" ng-model="user.alias">
+			Alias: <input class="input2" type="text" ng-model="user.alias">
 			Password: <input class="input2" type="password" ng-model="user.password">
 		</form>
 		<button class="login" ng-click="usersCtrl.login(user)">Enter</button>
