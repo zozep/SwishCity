@@ -1,13 +1,24 @@
-<h1>Park Info</h1>
 <div id="parkInfo">
+<h1>Park Info</h1>
+
+
 	<div id="parkForm">
 		<div ng-bind="parksCtrl.park.name"></div>
 		<div ng-bind="parksCtrl.park.formatted_address"></div>
 		<div ng-bind="parksCtrl.park.formatted_phone_number"></div>
-		<button ng-click="parksCtrl.addToPark()">Add me</button>
-		<button ng-click="parksCtrl.removeFromPark()">Remove me</button>
+		<button class="parkButton" ng-click="parksCtrl.addToPark()">Add me</button>
+		<button class="parkButton" ng-click="parksCtrl.removeFromPark()">Remove me</button>		
+		<button class="parkButton"><a href="#/dashboard">back</a></button>
 	</div>
-		<h2>List of users in this park:</h2>
+
+	<div id="parkRules">
+		<p>1. Click "Add me/Remove me" to add/remove yourself to/from a park </p>
+		<p>2. You cannot add yourself to more than 1 park at a time</p>
+		<p>3. When you click "Add me", you will automatically be added to that specific park. <br>  No notifications will pop up</p>
+		<p>4. When you are done playing, click "Remove me"</p>
+	</div>
+
+		<h2>List of players in this park:</h2>
 			<ul>
 				<li ng-repeat="user in users">{{user}}</li>
 			</ul>

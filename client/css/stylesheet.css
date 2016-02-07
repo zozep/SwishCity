@@ -86,7 +86,7 @@
 	width: 100%;
 	height: 100%;
 	background-color: #c5d5cb;
-	display: block;
+	display: inline-block;
 	position: relative;
 }
 #courts #welcomeMsg{
@@ -105,7 +105,6 @@
 	border-top: 2pt solid white;
 	display: block;
 	position: absolute;
-	top: 0; right: 0;
 	height: inherit;
 	width: 100%;
 }
@@ -193,16 +192,68 @@
 
 
 /*==============parkInfo Partial =========================*/
-#parkInfo {
-	display: inline-block
+#main #parkInfo{
+	margin: 0 auto;
+	padding: 0 auto;
+	display: inline-block;
+	background-color: #0E7172;
+	width: 100%;
+	font-size: 1em;
+}
+#parkInfo h1{
+	padding: 2%;
+	font-size: 3em;
+}
+#parkInfo #parkRules{
+	width: 50%;
+	border: 2pt solid white;
+	display: inline-block;
+	vertical-align: top;
+	padding: 1%;
+	margin: 1%;
+	background-color: #247BA0;
+	background-opacity: .7;
+	color: white;
+	padding: 1%;
+	font-size: 2em;
+}
+#parkRules p{
+	text-align: left;
+	margin:1%;
+	padding:1%;
+}
+#parkInfo h2{
+	padding-top: 2%;
+	font-size: 2em;
 }
 #parkForm{
-	border: 1pt solid white;
-	background-color: #404040;
-	width: 100%;
+	font-family: 'Open Sans';
+	border: 2pt solid white;
+	background-color: #133F62;
+	width: 50%;
+	display: inline-block;
 	position: center;
 	font-size: 2em;
-	margin: 2%;
-	padding: 2%;
+	padding: 1%;
 }
-
+.parkButton{
+	margin: 1%;
+	padding: 1%;
+	margin-top: 2%;
+	background-color: transparent;
+	border: 2pt solid white;
+	color: white;
+}
+.parkButton:hover{
+	background-color: rgba(255,255,255, 0.6);
+    background: transparent 0.6;
+    color: #133F62;
+}
+.parkButton a, .parkButton a:active, .parkButton a:visited{
+	color:#fff;
+}
+#parkInfo ul{
+	color: #fff;
+	list-style: none;
+	font-size: 2em;
+}
