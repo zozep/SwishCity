@@ -105,6 +105,7 @@
 	border-top: 2pt solid white;
 	display: block;
 	position: absolute;
+	margin-top: 25%;
 	height: inherit;
 	width: 100%;
 }
