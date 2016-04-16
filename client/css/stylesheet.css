@@ -11,13 +11,15 @@
 	background-color: #c5d5cb;
 	background-image: url("https://images.unsplash.com/photo-1448542146881-1d78dfb2f674?crop=entropy&fit=crop&fm=jpg&h=1450&ixjsv=2.1.0&ixlib=rb-0.3.5&q=80&w=2575");
 	background-attachment: fixed;
+    background-size: 100%; 
     background-repeat: no-repeat;
-    background-position: center center;
+    background-position: left;
 }
 #container #main{
 	width:100%;
-	max-height: inherit;
+	max-height: 100%;
 	text-align: center;
+	background-color: #c5d5cb;
 	color: #fff;
 	font-size: 1em;
 }
@@ -34,7 +36,7 @@
 
 #errMsg{
 	font-size: 2em;
-	color: rgb(254,78,124);
+	color: rgb(254,78,124);s
 }
 
 #regForm, #logForm{
@@ -44,8 +46,8 @@
 	display: inline-block;
 	padding: 2%;
 	border: 2pt solid white;
-	background-color: rgba(59,184,140, 0.3);
-	background: transparent .3;
+	background-color: rgba(59,184,140, 0.4);
+	background: transparent .4;
 }
 #regForm h2, #logForm h2{
 	margin-bottom: 2%;
